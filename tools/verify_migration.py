@@ -26,7 +26,7 @@ def main():
             continue
         if hashlib.sha256(path.read_bytes()).hexdigest() != entry['destination_sha256']:
             errors.append(f'Imported content changed: {name}')
-    actual = {p.relative_to(ROOT).as_posix() for directory in ('runbooks', 'references')
+    actual = {p.relative_to(ROOT).as_posix() for directory in ('runbooks', 'references', 'zones')
               for p in (ROOT / directory).rglob('*') if p.is_file()}
     if actual != seen:
         errors.append(f'Imported inventory mismatch: {sorted(actual ^ seen)}')

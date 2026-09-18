@@ -1,5 +1,7 @@
 # DNS 콘솔 2차 수집: 실제 Zone과 방화벽 규칙
 
+실행 이력: 2026-09-18 12:24 KST 두 서버의 수집본을 받아 검사했다. [Zone 수신 결과](ZONE_INTAKE_20260918.md)를 참조한다. 이미 완료된 이번 수집을 반복할 필요는 없다. 아래는 사용한 절차의 보존본이다.
+
 대상은 dns01 / dns02, 계정은 각각 기존 `server01_dns01` / `server08` 관리 계정이다. 콘솔 로그인 상태에서 Python 3, sudo 조회 권한, BIND 도구, firewalld가 필요하다. 작업 경로는 사용자 홈의 새 `dns-zone-intake.<host>.*` 폴더이며 파일 생성 외 서비스·설정 변경은 없다.
 
 ## 전달과 실행
@@ -38,6 +40,6 @@ sha256sum -c SHA256SUMS
 
 원본 Zone·named 설정·방화벽·SELinux를 변경하지 않고 reload/restart/retransfer/AXFR를 실행하지 않는다. 따라서 서비스 원복 작업은 없다. 생성한 사용자 홈 결과 폴더만 검수 완료 후 별도 정리한다. 실제 TSIG key 파일 및 그 파일 hash는 수집하지 않는다.
 
-2차 수집기는 로컬 정적·모의 검증 후 제공한 새 도구다. 실제 서버 실행 및 BIND binary 동작은 결과를 수신하기 전까지 미실행으로 기록한다. 디스크 소스 확보 성공이 모든 in-memory 설정의 동일성, Zone 내용 동기화, AC PASS 또는 독립 승인이라는 뜻은 아니다. 원 named.conf/include의 배포 구조 복원은 별도 남은 작업이다.
+2차 수집기는 로컬 정적·모의 검증 후 제공했고 이후 사용자 서버 실행본으로 실제 BIND 형식 검사와 Zone 동일성을 확인했다. 디스크 소스 확보 성공이 모든 in-memory 설정의 동일성, 네트워크 전송·질의 정상, AC PASS 또는 독립 승인이라는 뜻은 아니다. 원 named.conf/include의 배포 구조 복원은 별도 남은 작업이다.
 
 형식 옵션과 읽기 동작의 근거: [ISC BIND named-checkzone / named-checkconf / rndc 공식 설명](https://bind9.readthedocs.io/en/stable/manpages.html).

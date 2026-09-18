@@ -51,3 +51,13 @@
 - MOCK: 외부 명령을 대체한 14개 시나리오 통과(두 호스트 정상/secondary raw fallback, chroot, 설정 변경, symlink, Secret, include, dynamic, journal, sudo 거부, 파일 변경, serial 변경, PID 변경, Zone 검사 실패). 별도 process config 인자 거부 3건 통과. stderr 및 가상 Secret 값이 산출물에 저장되지 않음을 확인했다. 이 테스트의 Zone 출력은 가상 자료이며 운영 증적이나 저장소의 Zone Source로 사용하지 않는다.
 - RUNTIME: 1차 사용자 수신 관찰 자료만 확보. 2차 수집기와 실제 BIND binary 검사·기능 시험은 서버에서 미실행. CI는 별도 확인하며 검사 0건을 PASS로 표시하지 않는다. 최신 HEAD 독립 REVIEW·MERGE는 미완료다.
 - 알려진 제한: 프로세스 실행 인자와 디스크 설정을 확인해도 모든 in-memory 설정이 현재 디스크와 같다고 입증하지 않는다. 정상 수집 표시는 AC 인수가 아니다. 원 named.conf/include 구조와 v1.9 과거 검증 원본은 계속 미확보다.
+
+## 2차 콘솔 Runtime 수신 및 Zone 편입 — 2026-09-18 12:26~12:34 KST
+
+- RECEIPT/STATIC: 호스트별 원 Manifest 23개씩 총 46개 일치. 두 SESSION의 Collector SHA-256은 제공한 091ecee Source와 일치한다. 실제 private key/TSIG key 및 그 hash를 수집하지 않았고 제한된 민감정보 패턴을 점검했다.
+- RUNTIME 관찰(사용자 제출 원본): BIND 9.18.33, 실제 config `/etc/named.conf`, process root `/`, 고정 Zone 경로 확인. dns01 text RC 0 / dns02 text 시도 RC 1 후 raw RC 0. 두 상태 COMPLETE_COLLECTION_ONLY 및 수집 전후 stat/PID/serial 변경 미관측. 자세한 원 명령·RC·시각은 evidence PR #16에 있다. 전체 argv와 stderr 미저장 제한을 유지한다.
+- CONTENT: 정규화 Zone 양쪽 882 bytes byte-identical, SHA-256 `7161d50eaaed299d4cc14eb409a5351e7c260aff572db04e8a3802c97c09b954`. A 13개 이름·주소를 승인 R5 문서 표와 직접 대조해 일치, NS 2/SOA 1/TTL 300/serial 2026090101 확인. 실제 네트워크 질의·전송 시험은 아니다.
+- FIREWALL: 양쪽 zone 설정 및 DNS rich rule/ipset 일치. runtime/permanent의 active/interface 표기 차이는 기록하고 NM 지속성·dns service 정의·policy/direct/kernel 규칙·실제 패킷 시험 미확인 범위를 분리했다.
+- SOURCE STATIC: 가져온 파일 28개 / UTF-8 source 45개 이관 검사 RC 0. Python 구문과 로컬 문서 링크 확인. 주 Zone 변조 시 hash 오류 RC 1, 미등록 Zone 추가 시 inventory 오류 RC 1을 격리 사본에서 확인했다. 기존 이관 원본과 Collector 코드는 변경하지 않았다.
+- EVIDENCE: 원본 64개 + 관리 자료 3개를 증적 commit `f5f1537408a17672aed8581e7cbe2962bd4951f5`에 등록. 원격 67개 blob/mode 일치, 기존 680개 blob/mode 불변. PR #16 독립 검토 요청, 미병합.
+- CI·독립 REVIEW·MERGE는 각 PR의 실제 상태를 따른다. 새 서버 기능 시험/변경/재시작, AC 전체 재인수, 정본 발행, 기존 Done 티켓 재종결은 수행하지 않았다. 앞 절의 2차 서버 미실행 표기는 수신 전 이력이며 이번 실제 실행본 수신으로 갱신됐다.

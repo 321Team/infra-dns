@@ -22,13 +22,17 @@ v1.9는 2026-09-03 README, 안전 실행 Runbook, `validate_runbook_v1_9.sh`, `v
 
 | 대상 | 이번 확인 결과 / 후속 인수 조건 |
 |---|---|
-| dns01/dns02의 `named.conf`·include 파일·Zone 원본 | 두 ZIP에는 없었음. 11:05 KST 콘솔 수집으로 include 확장·마스킹 참고 설정 2개 및 zonestatus/ipset을 확보했다. 실제 process config/chroot, 원 named.conf/include 구조, Zone 원본·방화벽 규칙은 추가 수집 필요. [서버 수집 기록](SERVER_INTAKE.md) 참조 |
+| dns01/dns02의 `named.conf`·include 파일·Zone 원본 | 1차에서 마스킹 참고 설정 2개 확보. 12:24 KST 2차에서 실제 process config/root·Zone 원본·정규화본·firewalld zone 규칙 확보. 주 Zone은 zones/에 바이트 그대로 등록했다. 원 named.conf/include 구조와 완전한 배포 인수는 잔여. [Zone 수신 판정](ZONE_INTAKE_20260918.md) 참조 |
 | `P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8` Collector | 2026-09-18 ansible01에서 Kit/sidecar 확보. 내부 10항목 및 설치본 11개 동일성 확인 후 본 이관 PR에 추가. [서버 수집 기록](SERVER_INTAKE.md) 참조 |
 | v1.9 설치/실행 검증 기록 원본 | 승인 설명에 `P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md`가 언급됨. 이번 ZIP에는 없음. 과거 RC 0은 승인 기록의 이력이고 이번 서버 실행 결과가 아님 |
 
 기존 저장소 검색은 baseline/evidence/ansible/kubernetes/lb/cicd/monitoring의 조회된 main tree와 일부 코드 검색까지다. 채팅 목록 및 관련 대화 일부도 확인했으며 전체 채팅·모든 저장소를 확인했다고 주장하지 않는다. 이후 사용자가 제공한 원본 ZIP을 직접 검증해 v1.9 Source를 찾았다.
 
 현재 Source 등록의 완료조건은 정확한 이관 Manifest, 정적 검사, 최신 HEAD 독립 리뷰와 PR 병합이다. DNS 설정 전체 이관과 운영 소비자 전환은 위 미확보 항목을 인수하고 별도 영향 검증 후 판단한다.
+
+## 2차 콘솔 수신 반영
+
+2026-09-18 12:24 KST 실행본의 46개 서버 Manifest 항목을 확인했다. 주 Zone 원본과 Secondary 정규화 참고본을 추가하여 이관 Source는 총 28개다. 1·2차 원본 64개와 관리 자료 3개는 [증적 PR #16](https://github.com/321Team/fds-project-evidence/pull/16)에 등록했으며 미병합·독립 검토 대기다. 기존 원본과 과거 Done/승인 이력을 유지한다.
 
 ## 수동 노션 자료 추가 수신
 

@@ -1,5 +1,7 @@
 # 서버 Source 수집 기록 — 2026-09-18
 
+최신 상태: **12:24 KST 2차 콘솔 실행본 수신 완료**. 실제 config/root·Zone 원본·정규화본·firewalld zone 규칙을 확보했고 [Zone 수신 판정](ZONE_INTAKE_20260918.md)에 이관 결과를 기록했다. 아래 시간대별 관찰은 당시 범위로 읽는다.
+
 ## 실제 확보
 
 사용자의 읽기 전용 수집 착수 지시에 따라 기존 SSH 인증·엄격한 호스트 키 검증으로 `server01_ansible@10.250.10.10`에 접속했고 `hostname -s` 결과 `ansible01`을 확인했다. 2026-09-18 10:47~10:50 KST에 아래 자료를 수신·대조했다.
@@ -42,12 +44,18 @@
 
 화면에서 dns01 MainPID 1266, dns02 MainPID 1482, `/usr/lib/systemd/system/named.service`를 확인했다. ExecStart에는 `${NAMEDCONF}`와 `$OPTIONS`가 남아 있어 실제 프로세스의 config/chroot 경로는 아직 확정하지 않는다. 따라서 Zone의 후보 절대 경로는 각각 `/var/named/fds.internal.zone`, `/var/named/slaves/fds.internal.zone`이며 [2차 수집 절차](DNS_CONSOLE_SECOND_STEP.md)에서 프로세스 경로를 먼저 확인한다. 같은 serial만으로 두 Zone 내용의 동일성 또는 현재 모든 정책의 적용을 입증하지 않는다.
 
+## 2차 수집으로 해소된 항목 — 12:24 KST
+
+두 호스트의 실제 config는 `/etc/named.conf`, process root는 `/`, Zone 경로는 위 후보와 일치한다. dns01 text 원본 / dns02 raw 원본을 확보했고 BIND 9.18.33의 형식 검사 성공 및 정규화 결과 882 bytes 동일성을 확인했다. 승인 기록과 같은 A 13개 / NS 2개 / SOA 1개, serial 2026090101이다. 서버 Manifest 총 46항목이 일치한다.
+
+방화벽 zone 전문을 확보했고 양쪽 public의 DNS rich rule과 14개 IPSet이 runtime/permanent에서 일치한다. active/interface 표기 차이 및 실제 service 정의·NM 지속성·패킷 시험 미확인 범위는 [상세 판정](ZONE_INTAKE_20260918.md)에 기록했다. 1차 원본과 이번 원본은 [증적 PR #16](https://github.com/321Team/fds-project-evidence/pull/16)에 편입 요청했으며 과거의 로컬 보존만 완료됐다는 표기는 1차 당시 이력이다.
+
 ## 남은 수집 사항
 
-- 실제 daemon의 config/chroot 경로, Zone 원본과 비교 가능한 정규화본, 방화벽 규칙 전문, 원 named.conf/include 구조가 남았다. 자동 SSH 인증 거부(RC 255)는 현장 콘솔 수신과 별개의 접속 제한이다. 검증을 끄거나 새로운 키·계정·권한을 설치하지 않았다.
+- 원 named.conf/include 파일 경계·Secret 참조 구조, dns service 정의·NM profile 및 전체 firewall policy/direct/kernel 규칙은 미수집이다. 앞의 config/root·Zone·zone 규칙 미확보는 2차에서 해소됐다. 자동 SSH 인증 거부(RC 255)는 현장 콘솔 수신과 별개의 접속 제한이며 검증을 끄거나 새로운 키·계정·권한을 설치하지 않았다.
 - `/home/server01_ansible/p1-dns-01-r2/` 내 검증 기록 후보 파일명 검색에서 v1.9 실행 검증 원본을 찾지 못했다. 문서의 과거 RC 0 요약을 원본 로그로 바꾸지 않는다. 전체 서버를 검색한 결과라는 뜻도 아니다.
-- 2차 수집은 이미 사용 중인 현장 콘솔 경로로 계속한다. private key/TSIG secret/TSIG key 파일 hash는 수집하지 않는다.
+- 잔여 수집에서도 private key/TSIG secret/TSIG key 파일 hash는 제외한다. 새로운 실행·배포 또는 기능 재시험을 이번 수신 결과로 자동 승인하지 않는다.
 
 ## 상태
 
-READ-ONLY INTAKE: v1.8 수신·설치본 대조 및 DNS 1차 콘솔 수신 완료. STATIC: ZIP/Manifest/구문 검사와 콘솔 수신 hash 12개 일치. RUNTIME 관찰: 사용자가 전달한 zonestatus/ipset의 부분 관찰 자료 확보. 새 기능 시험·운영 변경: 미실행. 전체 AC 재검증, CI·독립 REVIEW·MERGE와 구분한다. 소스 등록 PR과 별도의 원본 증적 저장소 편입은 독립 리뷰 절차를 유지한다.
+READ-ONLY INTAKE: v1.8 수신·설치본 대조와 DNS 1·2차 콘솔 수신 완료. STATIC: 원본 무결성·Source 검사. RUNTIME 관찰: 사용자 제출 실제 process/Zone/zone 규칙 및 named-checkzone 실행 기록 확보. 새 기능 시험·운영 변경·AC 전체 재검증은 미실행이다. CI·독립 REVIEW·MERGE와 구분하며 소스·증적 PR 양쪽의 독립 리뷰 절차를 유지한다.
