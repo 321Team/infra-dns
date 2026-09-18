@@ -18,12 +18,12 @@ v1.9는 2026-09-03 README, 안전 실행 Runbook, `validate_runbook_v1_9.sh`, `v
 - R2 ZIP·Raw 로그·원 승인 기록의 원본은 증적 저장소와 원 공유 경로에 보존한다. 정본·Ansible Resolver·CoreDNS 구현의 소유권을 가져오지 않는다.
 - 원본 v1.9를 수정해 현재 정책을 덮어쓰지 않는다. 현재 승인 절차와 사용 제한은 상위 README·POLICY에서 안내한다.
 
-## 아직 확보하지 못한 실행 Source
+## 실행 Source 확보 상태
 
 | 대상 | 이번 확인 결과 / 후속 인수 조건 |
 |---|---|
 | dns01/dns02의 `named.conf`·include 파일·Zone 원본 | 두 ZIP에 파일 없음. 과거 로그만으로 배포 파일을 만들어 넣지 않는다. 현재 호스트/시각/경로/serial 및 `.56` 후속 변경을 식별한 Secret 제거본과 Secret 제외 목록이 필요 |
-| `P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8` Collector | v1.9 README가 의존성을 참조하지만 두 ZIP에는 없음. 해당 Kit·sidecar와 승인 출처 대조 후 별도 코드 PR |
+| `P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8` Collector | 2026-09-18 ansible01에서 Kit/sidecar 확보. 내부 10항목 및 설치본 11개 동일성 확인 후 본 이관 PR에 추가. [서버 수집 기록](SERVER_INTAKE.md) 참조 |
 | v1.9 설치/실행 검증 기록 원본 | 승인 설명에 `P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md`가 언급됨. 이번 ZIP에는 없음. 과거 RC 0은 승인 기록의 이력이고 이번 서버 실행 결과가 아님 |
 
 기존 저장소 검색은 baseline/evidence/ansible/kubernetes/lb/cicd/monitoring의 조회된 main tree와 일부 코드 검색까지다. 채팅 목록 및 관련 대화 일부도 확인했으며 전체 채팅·모든 저장소를 확인했다고 주장하지 않는다. 이후 사용자가 제공한 원본 ZIP을 직접 검증해 v1.9 Source를 찾았다.
@@ -32,4 +32,4 @@ v1.9는 2026-09-03 README, 안전 실행 Runbook, `validate_runbook_v1_9.sh`, `v
 
 ## 수동 노션 자료 추가 수신
 
-2026-09-18 후속 제공된 Notion Export에서 문서 4개·이미지 1개를 확인했다. 본문/R2/R5·초기 보고서의 차이와 백업 경로는 [NOTION_IMPORT.md](NOTION_IMPORT.md)에 기록했다. 역사 참고 문서 3개를 바이트 그대로 추가했으며 기존 10개 이관 파일을 덮어쓰지 않았다. 승인 기록·회신 이미지는 수신 hash만 기록하고 원본 증적의 보관 책임을 유지한다. named.conf·Zone·v1.8 Collector 및 v1.9 실행 검증 원본 미확보 상태는 그대로다.
+2026-09-18 후속 제공된 Notion Export에서 문서 4개·이미지 1개를 확인했다. 본문/R2/R5·초기 보고서의 차이와 백업 경로는 [NOTION_IMPORT.md](NOTION_IMPORT.md)에 기록했다. 역사 참고 문서 3개를 바이트 그대로 추가했으며 기존 10개 이관 파일을 덮어쓰지 않았다. 승인 기록·회신 이미지는 수신 hash만 기록하고 원본 증적의 보관 책임을 유지한다. 노션 자료 확인 시점에는 named.conf·Zone·v1.8 Collector 및 v1.9 실행 검증 원본이 미확보였다. 이후 서버 수집으로 v1.8 Kit는 확보했으며 나머지는 미수집이다.

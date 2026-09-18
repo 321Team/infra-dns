@@ -38,7 +38,7 @@ v1.0 §7.2는 아래 **당시 백업** 위치를 적고 있다.
 
 이는 현재 유효 설정의 위치나 내용이 확인됐다는 뜻이 아니다. 특히 factory/pre-tsig는 구축 전 복구 자산이므로 현재 배포용 설정으로 채택하지 않는다. 서버 접근·내용 조회·복구는 이번에 수행하지 않았다.
 
-이번 Export에는 `named.conf`, Zone 원본, v1.8 Collector 실행 파일, `P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md` 실파일이 없다. 마지막 파일은 문서 안에서 참조될 뿐이다. 구현·검증 보고서도 결과 요약이며 원본 실행 로그와 구분한다. 따라서 [기존 미확보 항목](MIGRATION.md)은 유지한다.
+이번 Export에는 `named.conf`, Zone 원본, v1.8 Collector 실행 파일, `P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md` 실파일이 없다. 마지막 파일은 문서 안에서 참조될 뿐이다. 구현·검증 보고서도 결과 요약이며 원본 실행 로그와 구분한다. 이는 Export의 포함 범위 판정이다. 이후 ansible01 서버 수집으로 v1.8 Kit는 확보했으며 [최신 확보 상태](SERVER_INTAKE.md)를 따른다.
 
 ## 검증 범위
 

@@ -11,9 +11,11 @@ Phase 1 BIND Primary/Secondary DNS의 구현 Source와 Runbook 저장소다. Pri
 
 - [수동 노션 자료 확인](docs/NOTION_IMPORT.md): Done 본문과 이전 개정 첨부의 차이를 기록하고 역사 참고 문서 3개를 추가했다.
 
+- [서버 수집 기록](docs/SERVER_INTAKE.md): ansible01에서 v1.8 Kit 11개 파일을 확보했고 설치본과 동일성을 확인했다. [보관된 v1.8](runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/README.md)은 Source 이관용이며 이번 수집에서 실행하지 않았다.
+
 ## 현재 사용 범위
 
-이 PR은 Source 등록이다. 운영 서버에 설치하거나 DNS 설정·TSIG·Failover를 재실행하지 않았다. `named.conf`, Zone 원본, v1.8 Collector는 아직 입수하지 못했으므로 운영 배포용 DNS 구성 전체가 이관됐다고 판단하지 않는다. 과거 로그를 현재 설정 파일로 재구성하지 않는다.
+이 PR은 Source 등록이다. 운영 서버에 설치하거나 DNS 설정·TSIG·Failover를 재실행하지 않았다. `named.conf`, Zone 원본은 아직 입수하지 못했으므로 운영 배포용 DNS 구성 전체가 이관됐다고 판단하지 않는다. 과거 로그를 현재 설정 파일로 재구성하지 않는다.
 
 v1.9는 **2026-09-02 R2 묶음 검증 전용**이다. 내부의 고정 해시·11/11/12 개수는 그 묶음에만 적용한다. 현재 DNS 전체 상태를 검사하는 범용 도구가 아니다. 원본 문서의 당시 Support 승인 표현은 역사로 보존하며, 현재 사람 간 승인 절차는 [2026-09-18 정책](https://github.com/321Team/fds-project-baseline/blob/b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948/governance/REVIEW_AUTHORITY_POLICY.md)을 적용한다.
 

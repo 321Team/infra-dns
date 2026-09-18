@@ -36,3 +36,9 @@
 - 노션 본문 Done, 첨부 v1.3-R2 In Review 및 v1.0의 .109 제외를 대조하고 [적용 기준 차이](NOTION_IMPORT.md)를 명시했다. 기존 v1.3-R5 및 최신 정본을 변경하지 않았다.
 - 기존 Runbook 실행 코드·검증 도구·Workflow는 변경하지 않았다. 이번 추가는 문서/Manifest이며 전체 PR의 코드 포함 분류는 유지한다. 최신 HEAD의 독립 리뷰·병합은 PR 상태로 확인한다.
 - CI/RUNTIME 재실행 없음. 설정 원본·Collector·v1.9 실행 검증 원본 문서는 이번 Export에도 없어 미확보를 유지한다.
+
+## 서버 v1.8 Kit 추가 — 2026-09-18 10:50 KST
+
+- 기존 SSH/SCP 인증과 호스트 키 검증으로 ansible01에서 ZIP/sidecar를 읽기 전용 수신했다. ZIP hash·CRC·내부 Manifest 10항목 일치, 설치본 11개 전부 byte 일치.
+- 원본 스크립트 5개 `bash -n` 구문 검사 RC 0. Collector 기능, 재전송, index/checksum 생성은 실행하지 않았다.
+- 11개 Source를 Manifest에 추가했다. 위 절의 v1.8 미확보 표기는 당시 이력이며 현재 v1.8은 확보됐다. named.conf/Zone 및 v1.9 원본 실행 검증 기록은 계속 미수집이다.
