@@ -42,3 +42,12 @@
 - 기존 SSH/SCP 인증과 호스트 키 검증으로 ansible01에서 ZIP/sidecar를 읽기 전용 수신했다. ZIP hash·CRC·내부 Manifest 10항목 일치, 설치본 11개 전부 byte 일치.
 - 원본 스크립트 5개 `bash -n` 구문 검사 RC 0. Collector 기능, 재전송, index/checksum 생성은 실행하지 않았다.
 - 11개 Source를 Manifest에 추가했다. 위 절의 v1.8 미확보 표기는 당시 이력이며 현재 v1.8은 확보됐다. named.conf/Zone 및 v1.9 원본 실행 검증 기록은 계속 미수집이다.
+
+## 현장 콘솔 1차 수신 및 2차 수집기 — 2026-09-18 11:10~11:15 KST
+
+- STATIC: dns01/dns02의 SHA256SUMS 대상 6개씩 총 12개 전부 일치. 원본 14개와 스크린샷 2개는 로컬 보존, 정규화·마스킹 참고 설정 2개만 소스 경로에 바이트 그대로 추가했다. 최종 이관 파일 26개 / UTF-8 source 42개 검사 RC 0.
+- CONTENT: 양쪽 ACL의 14개 IPv4와 runtime/permanent ipset이 일치하고 `.109`/`.56`을 포함한다. zonestatus serial은 양쪽 2026090101이다. Zone 내용, 레코드 개수, 실제 방화벽 enforcement는 이 자료만으로 PASS 처리하지 않는다.
+- STATIC: 새 Python 수집기의 구문 검사. 고정 Zone 경로만 조회하고 실제 config/root 확인, masked config hash 일치, symlink·journal·dynamic·include·파일/serial/process 변경 시 중단하도록 검토했다. 원본 v1.8/v1.9 스크립트와 CI Workflow에는 변경이 없다.
+- MOCK: 외부 명령을 대체한 14개 시나리오 통과(두 호스트 정상/secondary raw fallback, chroot, 설정 변경, symlink, Secret, include, dynamic, journal, sudo 거부, 파일 변경, serial 변경, PID 변경, Zone 검사 실패). 별도 process config 인자 거부 3건 통과. stderr 및 가상 Secret 값이 산출물에 저장되지 않음을 확인했다. 이 테스트의 Zone 출력은 가상 자료이며 운영 증적이나 저장소의 Zone Source로 사용하지 않는다.
+- RUNTIME: 1차 사용자 수신 관찰 자료만 확보. 2차 수집기와 실제 BIND binary 검사·기능 시험은 서버에서 미실행. CI는 별도 확인하며 검사 0건을 PASS로 표시하지 않는다. 최신 HEAD 독립 REVIEW·MERGE는 미완료다.
+- 알려진 제한: 프로세스 실행 인자와 디스크 설정을 확인해도 모든 in-memory 설정이 현재 디스크와 같다고 입증하지 않는다. 정상 수집 표시는 AC 인수가 아니다. 원 named.conf/include 구조와 v1.9 과거 검증 원본은 계속 미확보다.

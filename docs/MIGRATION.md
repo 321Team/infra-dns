@@ -22,7 +22,7 @@ v1.9는 2026-09-03 README, 안전 실행 Runbook, `validate_runbook_v1_9.sh`, `v
 
 | 대상 | 이번 확인 결과 / 후속 인수 조건 |
 |---|---|
-| dns01/dns02의 `named.conf`·include 파일·Zone 원본 | 두 ZIP에 파일 없음. 과거 로그만으로 배포 파일을 만들어 넣지 않는다. 현재 호스트/시각/경로/serial 및 `.56` 후속 변경을 식별한 Secret 제거본과 Secret 제외 목록이 필요 |
+| dns01/dns02의 `named.conf`·include 파일·Zone 원본 | 두 ZIP에는 없었음. 11:05 KST 콘솔 수집으로 include 확장·마스킹 참고 설정 2개 및 zonestatus/ipset을 확보했다. 실제 process config/chroot, 원 named.conf/include 구조, Zone 원본·방화벽 규칙은 추가 수집 필요. [서버 수집 기록](SERVER_INTAKE.md) 참조 |
 | `P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8` Collector | 2026-09-18 ansible01에서 Kit/sidecar 확보. 내부 10항목 및 설치본 11개 동일성 확인 후 본 이관 PR에 추가. [서버 수집 기록](SERVER_INTAKE.md) 참조 |
 | v1.9 설치/실행 검증 기록 원본 | 승인 설명에 `P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md`가 언급됨. 이번 ZIP에는 없음. 과거 RC 0은 승인 기록의 이력이고 이번 서버 실행 결과가 아님 |
 
@@ -32,4 +32,4 @@ v1.9는 2026-09-03 README, 안전 실행 Runbook, `validate_runbook_v1_9.sh`, `v
 
 ## 수동 노션 자료 추가 수신
 
-2026-09-18 후속 제공된 Notion Export에서 문서 4개·이미지 1개를 확인했다. 본문/R2/R5·초기 보고서의 차이와 백업 경로는 [NOTION_IMPORT.md](NOTION_IMPORT.md)에 기록했다. 역사 참고 문서 3개를 바이트 그대로 추가했으며 기존 10개 이관 파일을 덮어쓰지 않았다. 승인 기록·회신 이미지는 수신 hash만 기록하고 원본 증적의 보관 책임을 유지한다. 노션 자료 확인 시점에는 named.conf·Zone·v1.8 Collector 및 v1.9 실행 검증 원본이 미확보였다. 이후 서버 수집으로 v1.8 Kit는 확보했으며 나머지는 미수집이다.
+2026-09-18 후속 제공된 Notion Export에서 문서 4개·이미지 1개를 확인했다. 본문/R2/R5·초기 보고서의 차이와 백업 경로는 [NOTION_IMPORT.md](NOTION_IMPORT.md)에 기록했다. 역사 참고 문서 3개를 바이트 그대로 추가했으며 기존 10개 이관 파일을 덮어쓰지 않았다. 승인 기록·회신 이미지는 수신 hash만 기록하고 원본 증적의 보관 책임을 유지한다. 이후 서버 수집으로 v1.8 Kit를 확보했고, 현장 콘솔에서 마스킹 참고 설정 2개를 받았다. 최신 확보 범위와 남은 항목은 SERVER_INTAKE.md를 따른다.

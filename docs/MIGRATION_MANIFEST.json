@@ -1,5 +1,5 @@
 {
-  "checked_at_kst": "2026-09-18T10:18:01+09:00",
+  "checked_at_kst": "2026-09-18T11:10:00+09:00",
   "type": "snapshot-copy; no source deletion or runtime cutover",
   "canonical_release": {
     "tag": "docs-v3.1.19",
@@ -360,6 +360,32 @@
       "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/R2_REMEDIATION_RUNBOOK.md",
       "installed_matches_archive": true,
       "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "references/console-20260918/dns01/named.expanded.sanitized.reference.conf",
+      "mode": "100644",
+      "source_type": "user-provided console collection; normalized masked configuration",
+      "source_host": "dns01",
+      "source_account": "server01_dns01",
+      "collected_at": "2026-09-18T11:05:05+09:00",
+      "source_path": "dns-source-intake.dns01.Htu9rkHA/named.expanded.sanitized.conf",
+      "source_sha256": "3a269aa35800afee638fcc9a6768cfdd21ab81a6b6a5c1945f6b8391bec3345d",
+      "destination_sha256": "3a269aa35800afee638fcc9a6768cfdd21ab81a6b6a5c1945f6b8391bec3345d",
+      "transformation": "none after receipt; byte-exact copy of named-checkconf -p -x output, NOT original named.conf",
+      "use": "NON-DEPLOYABLE reference; masked TSIG placeholder; effective process/config and original include layout remain unverified"
+    },
+    {
+      "destination": "references/console-20260918/dns02/named.expanded.sanitized.reference.conf",
+      "mode": "100644",
+      "source_type": "user-provided console collection; normalized masked configuration",
+      "source_host": "dns02",
+      "source_account": "server08",
+      "collected_at": "2026-09-18T11:05:13+09:00",
+      "source_path": "dns-source-intake.dns02.qVRcutre/named.expanded.sanitized.conf",
+      "source_sha256": "ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48",
+      "destination_sha256": "ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48",
+      "transformation": "none after receipt; byte-exact copy of named-checkconf -p -x output, NOT original named.conf",
+      "use": "NON-DEPLOYABLE reference; masked TSIG placeholder; effective process/config and original include layout remain unverified"
     }
   ],
   "archives": [
