@@ -29,3 +29,7 @@ v1.9는 2026-09-03 README, 안전 실행 Runbook, `validate_runbook_v1_9.sh`, `v
 기존 저장소 검색은 baseline/evidence/ansible/kubernetes/lb/cicd/monitoring의 조회된 main tree와 일부 코드 검색까지다. 채팅 목록 및 관련 대화 일부도 확인했으며 전체 채팅·모든 저장소를 확인했다고 주장하지 않는다. 이후 사용자가 제공한 원본 ZIP을 직접 검증해 v1.9 Source를 찾았다.
 
 현재 Source 등록의 완료조건은 정확한 이관 Manifest, 정적 검사, 최신 HEAD 독립 리뷰와 PR 병합이다. DNS 설정 전체 이관과 운영 소비자 전환은 위 미확보 항목을 인수하고 별도 영향 검증 후 판단한다.
+
+## 수동 노션 자료 추가 수신
+
+2026-09-18 후속 제공된 Notion Export에서 문서 4개·이미지 1개를 확인했다. 본문/R2/R5·초기 보고서의 차이와 백업 경로는 [NOTION_IMPORT.md](NOTION_IMPORT.md)에 기록했다. 역사 참고 문서 3개를 바이트 그대로 추가했으며 기존 10개 이관 파일을 덮어쓰지 않았다. 승인 기록·회신 이미지는 수신 hash만 기록하고 원본 증적의 보관 책임을 유지한다. named.conf·Zone·v1.8 Collector 및 v1.9 실행 검증 원본 미확보 상태는 그대로다.

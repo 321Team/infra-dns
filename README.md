@@ -9,6 +9,8 @@ Phase 1 BIND Primary/Secondary DNS의 구현 Source와 Runbook 저장소다. Pri
 - [R2 원본 증적](https://github.com/321Team/fds-project-evidence/tree/90093f88167055f81e8789d2a848f44ead0ee9ce/evidence/P1-DNS-01/received-20260907T063705Z/zip-contents)은 기존 증적 저장소에 보존한다. 제공된 R2 ZIP의 24개 파일 모두 해당 commit의 Git blob과 일치한다.
 - `references/`는 당시 정본·승인 기록의 출처를 고정한 참고본이다. 최신 결정이나 현재 Runtime 설정으로 취급하지 않는다. 파일별 출처·SHA-256·링크 변환은 [이관 Manifest](docs/MIGRATION_MANIFEST.json)에 기록했다.
 
+- [수동 노션 자료 확인](docs/NOTION_IMPORT.md): Done 본문과 이전 개정 첨부의 차이를 기록하고 역사 참고 문서 3개를 추가했다.
+
 ## 현재 사용 범위
 
 이 PR은 Source 등록이다. 운영 서버에 설치하거나 DNS 설정·TSIG·Failover를 재실행하지 않았다. `named.conf`, Zone 원본, v1.8 Collector는 아직 입수하지 못했으므로 운영 배포용 DNS 구성 전체가 이관됐다고 판단하지 않는다. 과거 로그를 현재 설정 파일로 재구성하지 않는다.

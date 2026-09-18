@@ -151,6 +151,39 @@
       "source_sha256": "62185520f0a3af9dea0ddddef026974e4b7a7ecccf901c3af1605bb43cadce6a",
       "destination_sha256": "62185520f0a3af9dea0ddddef026974e4b7a7ecccf901c3af1605bb43cadce6a",
       "transformation": "none; byte-exact"
+    },
+    {
+      "destination": "references/notion-export-20260918/BIND_Primary_Secondary.md",
+      "mode": "100644",
+      "source_type": "user-provided Notion export",
+      "source_archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+      "source_archive_sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+      "source_path": "BIND Primary Secondary 3c7b032f99a18026b71af192baa91408.md",
+      "source_sha256": "67756fb3ada071971611b57f77a2cd74a0b9d3952904049d216d62bc3ceb0dd6",
+      "destination_sha256": "67756fb3ada071971611b57f77a2cd74a0b9d3952904049d216d62bc3ceb0dd6",
+      "transformation": "none; byte-exact; filename normalized to distinguish historical revision"
+    },
+    {
+      "destination": "references/notion-export-20260918/P1-DNS-01_Implementation_Validation_Report_v1.0.md",
+      "mode": "100644",
+      "source_type": "user-provided Notion export",
+      "source_archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+      "source_archive_sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+      "source_path": "P1-DNS-01_Implementation_Validation_Report_v1.0.md",
+      "source_sha256": "9cb9dc55017cc531b3f11ed090b6af658d235317333b327f18ecd0e3987a82a2",
+      "destination_sha256": "9cb9dc55017cc531b3f11ed090b6af658d235317333b327f18ecd0e3987a82a2",
+      "transformation": "none; byte-exact; filename normalized to distinguish historical revision"
+    },
+    {
+      "destination": "references/notion-export-20260918/P1-DNS-01_Notion_Description_v1.3-R2.md",
+      "mode": "100644",
+      "source_type": "user-provided Notion export",
+      "source_archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+      "source_archive_sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+      "source_path": "P1-DNS-01_Notion_Description_v1.3_Review.md",
+      "source_sha256": "460d153b6c2ccbff506a5a26e2db7462abbac126979bb57a1d5f43d2acaadd2a",
+      "destination_sha256": "460d153b6c2ccbff506a5a26e2db7462abbac126979bb57a1d5f43d2acaadd2a",
+      "transformation": "none; byte-exact; filename normalized to distinguish historical revision"
     }
   ],
   "archives": [
@@ -178,5 +211,48 @@
     "matched_git_blobs": 24,
     "total_files": 24,
     "action": "link existing evidence; do not duplicate or modify"
+  },
+  "notion_intake": {
+    "received_date_kst": "2026-09-18",
+    "archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+    "sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+    "crc": "PASS",
+    "source_file_count": 5,
+    "external_archive_sidecar": "not supplied; SHA-256 computed at intake",
+    "files": [
+      {
+        "source_path": "BIND Primary Secondary 3c7b032f99a18026b71af192baa91408.md",
+        "bytes": 23178,
+        "sha256": "67756fb3ada071971611b57f77a2cd74a0b9d3952904049d216d62bc3ceb0dd6",
+        "action": "historical reference snapshot; not current execution policy",
+        "destination": "references/notion-export-20260918/BIND_Primary_Secondary.md"
+      },
+      {
+        "source_path": "P1-DNS-01_Implementation_Validation_Report_v1.0.md",
+        "bytes": 10741,
+        "sha256": "9cb9dc55017cc531b3f11ed090b6af658d235317333b327f18ecd0e3987a82a2",
+        "action": "historical reference snapshot; not current execution policy",
+        "destination": "references/notion-export-20260918/P1-DNS-01_Implementation_Validation_Report_v1.0.md"
+      },
+      {
+        "source_path": "P1-DNS-01_Notion_Description_v1.3_Review.md",
+        "bytes": 27238,
+        "sha256": "460d153b6c2ccbff506a5a26e2db7462abbac126979bb57a1d5f43d2acaadd2a",
+        "action": "historical reference snapshot; not current execution policy",
+        "destination": "references/notion-export-20260918/P1-DNS-01_Notion_Description_v1.3-R2.md"
+      },
+      {
+        "source_path": "P1-DNS-01_Support_Review_Approval_20260903.png",
+        "bytes": 8288,
+        "sha256": "0d0652c6940529e42619adbb54b2444a419fa265bea37dc247f5507c6487c4eb",
+        "action": "inspected and retained in local intake; not copied to source repo; original approval evidence intake belongs to independently reviewed evidence repository"
+      },
+      {
+        "source_path": "P1-DNS-01_Support_Review_Approval_Record_20260903.md",
+        "bytes": 1329,
+        "sha256": "0adc51a5f4b81ea4f502ffb3576062a2e315b7b20b31b392eb7391c1b38da95d",
+        "action": "inspected and retained in local intake; not copied to source repo; original approval evidence intake belongs to independently reviewed evidence repository"
+      }
+    ]
   }
 }

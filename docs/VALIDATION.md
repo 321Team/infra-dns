@@ -27,3 +27,12 @@
 - 제한된 Secret 패턴 검사 외에도 이번 diff에 실제 TSIG key·private key·인증정보가 포함되지 않는지 검토한다. 패턴 미검출만으로 모든 종류의 비밀정보 부재를 보증하지 않는다.
 - 정적 검증 범위를 넘어 스크립트의 전체 실패 경로를 새로 시험하지 않았다. v1.9의 실행 로직은 원본 그대로다. 이관 독립 검토자는 복원 출처·용도 제한·원본 동일성을 함께 확인한다.
 - named.conf·Zone·v1.8 Collector 미확보는 [남은 이관 항목](MIGRATION.md)에 명시했다. 현재 운영 DNS 구성 전체 복제나 배포 가능 상태를 주장하지 않는다.
+
+## 노션 자료 추가 검증 — 2026-09-18
+
+- Export ZIP CRC 정상; 수신 파일 5개의 SHA-256 계산 및 문서·이미지 확인.
+- 승인 회신 PNG의 SHA-256은 해당 Approval Record 기재값과 일치하며, Approval Record 자체는 앞서 공유폴더에서 받은 파일과 동일하다. 회신만으로 이번 PR의 독립 승인을 추정하지 않는다.
+- 역사 문서 3개 추가 후 이관 검사 RC 0: imported files 13개 / UTF-8 source files 25개. 원본 바이트·제한된 credential pattern 및 로컬 문서 링크 확인.
+- 노션 본문 Done, 첨부 v1.3-R2 In Review 및 v1.0의 .109 제외를 대조하고 [적용 기준 차이](NOTION_IMPORT.md)를 명시했다. 기존 v1.3-R5 및 최신 정본을 변경하지 않았다.
+- 기존 Runbook 실행 코드·검증 도구·Workflow는 변경하지 않았다. 이번 추가는 문서/Manifest이며 전체 PR의 코드 포함 분류는 유지한다. 최신 HEAD의 독립 리뷰·병합은 PR 상태로 확인한다.
+- CI/RUNTIME 재실행 없음. 설정 원본·Collector·v1.9 실행 검증 원본 문서는 이번 Export에도 없어 미확보를 유지한다.
