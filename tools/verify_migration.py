@@ -45,12 +45,16 @@ def main():
         if p.suffix in {'.key', '.p12', '.pfx', '.zip'} or p.name == '.env':
             errors.append(f'Unexpected sensitive/binary artifact: {rel.as_posix()}')
             continue
+        data = p.read_bytes()
         try:
-            content = p.read_text(encoding='utf-8')
+            content = data.decode('utf-8')
         except UnicodeDecodeError:
             errors.append(f'Unexpected non-UTF-8 file: {rel.as_posix()}')
             continue
         checked += 1
+        # runbooks/references/zones are byte-preserved (-text); everything else is eol=lf.
+        if b'\r' in data and rel.parts[0] not in {'runbooks', 'references', 'zones'}:
+            errors.append(f'CR line ending in LF-normalized file: {rel.as_posix()}')
         for number, line in enumerate(content.splitlines(), 1):
             if any(pattern.search(line) for pattern in patterns):
                 errors.append(f'Possible credential at {rel.as_posix()}:{number} (value suppressed)')
