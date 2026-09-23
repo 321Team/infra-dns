@@ -14,7 +14,7 @@
 | STATIC / 소스 검사 | `python3 tools/verify_migration.py` | RC 0; 10개 이관 파일, UTF-8 및 제한된 credential pattern 검사 통과 |
 | STATIC / Runbook | `bash runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/scripts/validate_runbook_v1_9.sh runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9` | RC 0; 두 스크립트 Bash 구문 및 원본 Runbook 규칙 검사 통과 |
 | STATIC / 실패 탐지 | 별도 임시 사본에서 이관 README 1개 변조 후 checker 실행 | 예상 RC 1 및 Imported content changed 탐지; 등록 파일에는 변조 없음 |
-| CI | 생성 당시 저장소 설정은 조직에서 Actions 비활성; 새 소스 검사 Workflow만 제출 | NOT RUN. 로컬 정적 검사를 CI PASS로 표현하지 않음 |
+| CI | 작성 당시 조직 Actions 비활성으로 판단; 새 소스 검사 Workflow만 제출. 2026-09-23 리뷰에서 저장소 Actions enabled가 지적되어 아래 절에서 정정 | NOT RUN. 로컬 정적 검사를 CI PASS로 표현하지 않음 |
 | MOCK / RUNTIME | dns01/dns02/ansible01 접속·키 변경·Failover·서비스 재시작·운영 배포 | 미실행 |
 | REVIEW / MERGE | 코드·Workflow 포함 PR, 최신 HEAD에 대한 작성자 외 독립 검토와 수동 병합 | 이 문서 작성 시 대기; 실제 최신 상태는 PR 참조 |
 
@@ -61,3 +61,10 @@
 - SOURCE STATIC: 가져온 파일 28개 / UTF-8 source 45개 이관 검사 RC 0. Python 구문과 로컬 문서 링크 확인. 주 Zone 변조 시 hash 오류 RC 1, 미등록 Zone 추가 시 inventory 오류 RC 1을 격리 사본에서 확인했다. 기존 이관 원본과 Collector 코드는 변경하지 않았다.
 - EVIDENCE: 원본 64개 + 관리 자료 3개를 증적 commit `f5f1537408a17672aed8581e7cbe2962bd4951f5`에 등록. 원격 67개 blob/mode 일치, 기존 680개 blob/mode 불변. PR #16 독립 검토 요청, 미병합.
 - CI·독립 REVIEW·MERGE는 각 PR의 실제 상태를 따른다. 새 서버 기능 시험/변경/재시작, AC 전체 재인수, 정본 발행, 기존 Done 티켓 재종결은 수행하지 않았다. 앞 절의 2차 서버 미실행 표기는 수신 전 이력이며 이번 실제 실행본 수신으로 갱신됐다.
+
+## 리뷰 반영 — 2026-09-23 KST
+
+- CI: Actions API 기준 이 저장소의 workflow run은 전체 0건이다. 9/18 push 당시의 Actions 설정은 확인할 수 없어 미실행 원인을 확정하지 않는다. 앞 표의 "조직 Actions 비활성"은 작성 당시 판단이며 현재 설정의 근거가 아니다. 이 절을 포함한 push의 `pull_request` 이벤트로 실행 여부를 확인하고 결과는 PR에 기록한다.
+- 줄바꿈: `MIGRATION_MANIFEST.json`, `CONSOLE_INTAKE_20260918.json`의 CRLF를 `.gitattributes`에 맞춰 LF로 정규화했다. 내용 변경은 없다. `verify_migration.py`는 `runbooks/`·`references/`·`zones/` 외 파일의 CR을 오류로 처리한다. 격리 사본에 CRLF 파일 추가, 정규화 전 Manifest 복원 시 각각 RC 1을 확인했다.
+- Zone 변경 절차: [ZONE_CHANGE.md](ZONE_CHANGE.md)에 저장소 변경 조건을 정의했다. 서버 반영·drift 확인은 후속 과제로 남긴다.
+- STATIC: `python3 tools/verify_migration.py` RC 0, `validate_runbook_v1_9.sh` RC 0. RUNTIME은 실행하지 않았다.

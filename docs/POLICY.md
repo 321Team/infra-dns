@@ -20,6 +20,7 @@
 - 코드·스크립트·Workflow·실행 설정 또는 혼합 PR은 작성자 외 적격 검토자 1인의 독립 검토 후 Lead가 병합을 판단한다. 이번 작성 경로는 GWONUK이며 이하영 `hayeounglee`에게 리뷰를 요청한다. AI 점검은 독립 승인이 아니다.
 - 문서만 변경하는 PR과 코드 외 실행·인수·종결은 기존 책임 Lead에게 위임한다. AC·시험·보안 통제는 유지한다. `fds-project-evidence`는 문서 포함 모든 PR에 독립 리뷰가 필요한 예외다.
 - 병합 직전 최신 HEAD, 승인 대상 SHA, 필수 검사, 미해결 차단사항을 확인한다. Reviewer 지정과 GitHub APPROVED, 실제 Merge를 구분한다.
+- 2026-09-23 Pre-check 예외를 포함한 현재 리뷰·병합 기준은 [리뷰 정책](REVIEW_POLICY.md)과 [중앙 정책 §3.2](https://github.com/321Team/fds-project-baseline/blob/49278c189dacb620e81d282c6401faa2a9c677a6/governance/REVIEW_AUTHORITY_POLICY.md)를 따른다. 두 문서가 이 절과 다르면 리뷰 정책이 우선한다. Zone·Workflow·수집기를 포함한 이 이관 PR은 혼합 PR이므로 예외 대상이 아니다.
 - branch protection/ruleset·CODEOWNERS는 이번에 적용하지 않는다. 정책 문서만으로 기술적 강제가 활성화됐다고 표시하지 않는다. Private를 유지하고 PR/SHA/독립 리뷰/수동 병합 기록으로 관리한다.
 
 ## Secret·Runtime·증적

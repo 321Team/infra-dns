@@ -24,7 +24,7 @@ v1.9는 2026-09-03 README, 안전 실행 Runbook, `validate_runbook_v1_9.sh`, `v
 |---|---|
 | dns01/dns02의 `named.conf`·include 파일·Zone 원본 | 1차에서 마스킹 참고 설정 2개 확보. 12:24 KST 2차에서 실제 process config/root·Zone 원본·정규화본·firewalld zone 규칙 확보. 주 Zone은 zones/에 바이트 그대로 등록했다. 원 named.conf/include 구조와 완전한 배포 인수는 잔여. [Zone 수신 판정](ZONE_INTAKE_20260918.md) 참조 |
 | `P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8` Collector | 2026-09-18 ansible01에서 Kit/sidecar 확보. 내부 10항목 및 설치본 11개 동일성 확인 후 본 이관 PR에 추가. [서버 수집 기록](SERVER_INTAKE.md) 참조 |
-| v1.9 설치/실행 검증 기록 원본 | 승인 설명에 `P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md`가 언급됨. 이번 ZIP에는 없음. 과거 RC 0은 승인 기록의 이력이고 이번 서버 실행 결과가 아님 |
+| v1.9 설치/실행 검증 기록 원본 | 승인 설명에 `P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md`가 언급됨. 이번 ZIP에는 없음. 과거 RC 0은 승인 기록의 이력이고 이번 서버 실행 결과가 아님. 2026-09-23 PR #2로 해당 [리뷰 판정 기록](archive/P1-DNS-01/20260903/P1-DNS-01_Runbook_v1.9_Validation_Record_20260903.md)을 보존했다. 원본 terminal log가 아니며 실행 시각 미제공이므로 원본 실행 로그는 계속 미확보다 |
 
 기존 저장소 검색은 baseline/evidence/ansible/kubernetes/lb/cicd/monitoring의 조회된 main tree와 일부 코드 검색까지다. 채팅 목록 및 관련 대화 일부도 확인했으며 전체 채팅·모든 저장소를 확인했다고 주장하지 않는다. 이후 사용자가 제공한 원본 ZIP을 직접 검증해 v1.9 Source를 찾았다.
 
