@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+*.key
+*.p12
+*.pfx
+*.zip
+*.log
+secrets/
+private/
+backups/

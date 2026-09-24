@@ -1,0 +1,143 @@
+{
+  "received_at_kst": "2026-09-18T11:10:00+09:00",
+  "method": "user-provided console collection; not an agent SSH execution",
+  "hosts": {
+    "dns01": {
+      "source_folder": "dns-source-intake.dns01.Htu9rkHA",
+      "session": {
+        "host": "dns01",
+        "collected_at": "2026-09-18T11:05:05+09:00",
+        "user": "server01_dns01"
+      },
+      "checksums": "6/6 match",
+      "files": {
+        "dns-ipset-permanent.txt": {
+          "sha256": "fe3751d9040614ea7186ab1d9e95e2f51d6d094ded4e88d03d2b6f85ef96e95f",
+          "bytes": 161
+        },
+        "dns-ipset-runtime.txt": {
+          "sha256": "fe3751d9040614ea7186ab1d9e95e2f51d6d094ded4e88d03d2b6f85ef96e95f",
+          "bytes": 161
+        },
+        "fds.internal.zonestatus.txt": {
+          "sha256": "8553bfc90af02a0f76c9b360f813b8ba2c9b74f065fc11a24d1b21f8a7d02792",
+          "bytes": 184
+        },
+        "firewall-active-zones.txt": {
+          "sha256": "43014936420bf46fcb67916495d397fa929e04459e627a61d93a0dd70727e8b2",
+          "bytes": 38
+        },
+        "named.expanded.sanitized.conf": {
+          "sha256": "3a269aa35800afee638fcc9a6768cfdd21ab81a6b6a5c1945f6b8391bec3345d",
+          "bytes": 2375
+        },
+        "SESSION.txt": {
+          "sha256": "64783432922bde2d07a98f6904a223e5aa8fb0b98a777732741595262f947cbd",
+          "bytes": 70
+        },
+        "SHA256SUMS": {
+          "sha256": "26e5c61a207d0173ffac405cb52213c596a45b112822e67e58b8f50360ea1204",
+          "bytes": 538
+        }
+      },
+      "ipset_runtime_equals_permanent": true,
+      "acl_ipv4_equals_ipset": true,
+      "allowed_clients": [
+        "10.1.93.50",
+        "10.1.93.51",
+        "10.1.93.52",
+        "10.1.93.53",
+        "10.1.93.54",
+        "10.1.93.55",
+        "10.1.93.56",
+        "10.1.93.102",
+        "10.1.93.103",
+        "10.1.93.104",
+        "10.1.93.105",
+        "10.1.93.107",
+        "10.1.93.108",
+        "10.1.93.109"
+      ],
+      "per_command_exit_codes": "not supplied",
+      "effective_daemon_configuration": "not yet established; systemd screenshot contains unexpanded variables"
+    },
+    "dns02": {
+      "source_folder": "dns-source-intake.dns02.qVRcutre",
+      "session": {
+        "host": "dns02",
+        "collected_at": "2026-09-18T11:05:13+09:00",
+        "user": "server08"
+      },
+      "checksums": "6/6 match",
+      "files": {
+        "dns-ipset-permanent.txt": {
+          "sha256": "fe3751d9040614ea7186ab1d9e95e2f51d6d094ded4e88d03d2b6f85ef96e95f",
+          "bytes": 161
+        },
+        "dns-ipset-runtime.txt": {
+          "sha256": "fe3751d9040614ea7186ab1d9e95e2f51d6d094ded4e88d03d2b6f85ef96e95f",
+          "bytes": 161
+        },
+        "fds.internal.zonestatus.txt": {
+          "sha256": "114b201b4e1c898562a45f4233ad819642038b2bdc8cf7f73a189c3ff6215c3a",
+          "bytes": 276
+        },
+        "firewall-active-zones.txt": {
+          "sha256": "43014936420bf46fcb67916495d397fa929e04459e627a61d93a0dd70727e8b2",
+          "bytes": 38
+        },
+        "named.expanded.sanitized.conf": {
+          "sha256": "ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48",
+          "bytes": 2331
+        },
+        "SESSION.txt": {
+          "sha256": "b762bf73b3e5bb090e6cbfba6e4824b92fe80b4a2219e4280c8148d78607d1cf",
+          "bytes": 64
+        },
+        "SHA256SUMS": {
+          "sha256": "4ef3f55c792fa0e487ec3b61523448d343634a1ccdc5d0e83e0f5b0d6ad55ae9",
+          "bytes": 538
+        }
+      },
+      "ipset_runtime_equals_permanent": true,
+      "acl_ipv4_equals_ipset": true,
+      "allowed_clients": [
+        "10.1.93.50",
+        "10.1.93.51",
+        "10.1.93.52",
+        "10.1.93.53",
+        "10.1.93.54",
+        "10.1.93.55",
+        "10.1.93.56",
+        "10.1.93.102",
+        "10.1.93.103",
+        "10.1.93.104",
+        "10.1.93.105",
+        "10.1.93.107",
+        "10.1.93.108",
+        "10.1.93.109"
+      ],
+      "per_command_exit_codes": "not supplied",
+      "effective_daemon_configuration": "not yet established; systemd screenshot contains unexpanded variables"
+    }
+  },
+  "screenshots": {
+    "dns01": {
+      "filename": "dns01-systemctl.png",
+      "sha256": "1b25579741cdff36d3f074b14273b30fc29c43e8aeee876f345b7e8342cb8448",
+      "bytes": 28132,
+      "repository_upload": false
+    },
+    "dns02": {
+      "filename": "dns02-systemctl.png",
+      "sha256": "5057d91c41f0d26d1d75f5c9c53db89c5d029c4a4264bb11e698ec56a4d99768",
+      "bytes": 18746,
+      "repository_upload": false
+    }
+  },
+  "limitations": [
+    "Hash agreement establishes received-byte integrity only, not independent provenance or AC PASS.",
+    "No zone file, full firewall rules, original config/include layout, or command exit-code transcript supplied.",
+    "Runtime logs and screenshots retained locally pending a separate evidence PR with independent review."
+  ]
+}

@@ -1,0 +1,504 @@
+{
+  "checked_at_kst": "2026-09-18T12:26:05+09:00",
+  "type": "snapshot-copy; no source deletion or runtime cutover",
+  "canonical_release": {
+    "tag": "docs-v3.1.19",
+    "commit": "966fc5365874b1d259a9810fc876b57c3bfa0e08",
+    "published_at_kst": "2026-09-18T09:20:13+09:00"
+  },
+  "files": [
+    {
+      "destination": "references/canonical-v3.1.19/P1-DNS-01.md",
+      "mode": "100644",
+      "source_type": "git",
+      "source_repository": "321Team/fds-project-baseline",
+      "source_commit": "b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948",
+      "source_path": "tickets/v3.1.19/descriptions/P1-DNS-01.md",
+      "source_git_blob": "4393ae3397649f474a10464d1018600a27e8fb92",
+      "source_sha256": "4650c38adeba76ba62668e7d31e48c279bff848392b59e03d2daa81b67ee341a",
+      "destination_sha256": "1613c49dd347ac649680ab8e00e753de04da2c6faf03c3735f098989530b8a2a",
+      "transformation": "relative Markdown links rebased to immutable original source",
+      "link_changes": [
+        {
+          "from": "../sources/issue-12.json",
+          "to": "https://github.com/321Team/fds-project-baseline/blob/b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948/tickets/v3.1.19/sources/issue-12.json"
+        }
+      ]
+    },
+    {
+      "destination": "references/canonical-v3.1.19/DEC-P2-DNS-01.md",
+      "mode": "100644",
+      "source_type": "git",
+      "source_repository": "321Team/fds-project-baseline",
+      "source_commit": "b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948",
+      "source_path": "tickets/v3.1.19/descriptions/DEC-P2-DNS-01.md",
+      "source_git_blob": "3ac8f56fed9991b3ad96b608566ee0e226108105",
+      "source_sha256": "8451c2f8bbd6cad56d545ccf5694f2b610c902680109cefb98885902e3ec86dd",
+      "destination_sha256": "4afede67d4668e5c16f13c7cf61e768ea66f8c84bf53c9953f8bfc3a47ec7ea0",
+      "transformation": "relative Markdown links rebased to immutable original source",
+      "link_changes": [
+        {
+          "from": "../sources/issue-40.json",
+          "to": "https://github.com/321Team/fds-project-baseline/blob/b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948/tickets/v3.1.19/sources/issue-40.json"
+        }
+      ]
+    },
+    {
+      "destination": "references/canonical-v3.1.19/P2-DNS-01.md",
+      "mode": "100644",
+      "source_type": "git",
+      "source_repository": "321Team/fds-project-baseline",
+      "source_commit": "b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948",
+      "source_path": "tickets/v3.1.19/descriptions/P2-DNS-01.md",
+      "source_git_blob": "4cfff09d04d759b06c4aad5ad03a79ffd1735a82",
+      "source_sha256": "e10b7c28e1b7885aac05d227731efe720f1d6bf33b8f9d8fd8a54e7b933ae379",
+      "destination_sha256": "912924e20beabed1d4aa90ba87de5919513d17a89448c142ac1d8d197ac341eb",
+      "transformation": "relative Markdown links rebased to immutable original source",
+      "link_changes": [
+        {
+          "from": "../sources/issue-48.json",
+          "to": "https://github.com/321Team/fds-project-baseline/blob/b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948/tickets/v3.1.19/sources/issue-48.json"
+        }
+      ]
+    },
+    {
+      "destination": "references/canonical-v3.1.19/DEC-P1-EGRESS-01.md",
+      "mode": "100644",
+      "source_type": "git",
+      "source_repository": "321Team/fds-project-baseline",
+      "source_commit": "b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948",
+      "source_path": "tickets/v3.1.19/descriptions/DEC-P1-EGRESS-01.md",
+      "source_git_blob": "0c4704436667cf63e4b31cfd5d6d48d4786d61ca",
+      "source_sha256": "47069ccab583a9285f78b0c2e6c480c8b82216d27adc1f27bc863e1b34bd1fab",
+      "destination_sha256": "647feffbc38770dc9f8abd6c64dadf83a324257e89516970490adda4a09f61a3",
+      "transformation": "relative Markdown links rebased to immutable original source",
+      "link_changes": [
+        {
+          "from": "../sources/issue-78.json",
+          "to": "https://github.com/321Team/fds-project-baseline/blob/b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948/tickets/v3.1.19/sources/issue-78.json"
+        }
+      ]
+    },
+    {
+      "destination": "references/approved-20260903/P1-DNS-01_Notion_Description_v1.3_Review.md",
+      "mode": "100644",
+      "source_type": "git",
+      "source_repository": "321Team/fds-project-evidence",
+      "source_commit": "90093f88167055f81e8789d2a848f44ead0ee9ce",
+      "source_path": "records/received-20260907/P1-DNS-01_Notion_Description_v1.3_Review.md",
+      "source_git_blob": "c03e16567045db3438b97cf77d5a14ef16b42066",
+      "source_sha256": "d6eb6918822b71b97c74a0be01d8920f4c96309df1a17235e2b886f7f47a18de",
+      "destination_sha256": "d6eb6918822b71b97c74a0be01d8920f4c96309df1a17235e2b886f7f47a18de",
+      "transformation": "none; byte-exact",
+      "link_changes": []
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/README.md",
+      "mode": "100644",
+      "source_type": "user-provided archive",
+      "source_archive": "P1-DNS-01_R2_Runbook_Supplement_v1.9.zip",
+      "source_archive_sha256": "86587f04dba2798ff7e34a7314cce0a87bcb3539c3746de7bcb878c2a2932a07",
+      "source_path": "P1-DNS-01_R2_Runbook_Supplement_v1.9/README.md",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "9181f712a7e9a55b501b6e51167d22bb02c250cc6b8c1737c884fad35bba7d63",
+      "destination_sha256": "9181f712a7e9a55b501b6e51167d22bb02c250cc6b8c1737c884fad35bba7d63",
+      "transformation": "none; byte-exact"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/scripts/validate_canonical_r2_v1_9.sh",
+      "mode": "100755",
+      "source_type": "user-provided archive",
+      "source_archive": "P1-DNS-01_R2_Runbook_Supplement_v1.9.zip",
+      "source_archive_sha256": "86587f04dba2798ff7e34a7314cce0a87bcb3539c3746de7bcb878c2a2932a07",
+      "source_path": "P1-DNS-01_R2_Runbook_Supplement_v1.9/scripts/validate_canonical_r2_v1_9.sh",
+      "source_zip_mode": "0o100750",
+      "source_sha256": "b755711573891a880864598386ec47df3e29da1de99ee9e9cd988557efff9b57",
+      "destination_sha256": "b755711573891a880864598386ec47df3e29da1de99ee9e9cd988557efff9b57",
+      "transformation": "none; byte-exact; executable bit preserved (Git does not preserve group/other permission detail)"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/scripts/validate_runbook_v1_9.sh",
+      "mode": "100755",
+      "source_type": "user-provided archive",
+      "source_archive": "P1-DNS-01_R2_Runbook_Supplement_v1.9.zip",
+      "source_archive_sha256": "86587f04dba2798ff7e34a7314cce0a87bcb3539c3746de7bcb878c2a2932a07",
+      "source_path": "P1-DNS-01_R2_Runbook_Supplement_v1.9/scripts/validate_runbook_v1_9.sh",
+      "source_zip_mode": "0o100750",
+      "source_sha256": "e21a3b66c5bd4f406ce91a9bb0f9f7fdd19634f75a19c32775384c3df8644f67",
+      "destination_sha256": "e21a3b66c5bd4f406ce91a9bb0f9f7fdd19634f75a19c32775384c3df8644f67",
+      "transformation": "none; byte-exact; executable bit preserved (Git does not preserve group/other permission detail)"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/P1-DNS-01_R2_SAFE_RUNBOOK_v1.9.md",
+      "mode": "100644",
+      "source_type": "user-provided archive",
+      "source_archive": "P1-DNS-01_R2_Runbook_Supplement_v1.9.zip",
+      "source_archive_sha256": "86587f04dba2798ff7e34a7314cce0a87bcb3539c3746de7bcb878c2a2932a07",
+      "source_path": "P1-DNS-01_R2_Runbook_Supplement_v1.9/P1-DNS-01_R2_SAFE_RUNBOOK_v1.9.md",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "1c7d7ca634800d4b4f2960476c809f2275558db8e14dbe485611904440be0bd5",
+      "destination_sha256": "1c7d7ca634800d4b4f2960476c809f2275558db8e14dbe485611904440be0bd5",
+      "transformation": "none; byte-exact"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/PACKAGE_CONTENT_SHA256SUMS",
+      "mode": "100644",
+      "source_type": "user-provided archive",
+      "source_archive": "P1-DNS-01_R2_Runbook_Supplement_v1.9.zip",
+      "source_archive_sha256": "86587f04dba2798ff7e34a7314cce0a87bcb3539c3746de7bcb878c2a2932a07",
+      "source_path": "P1-DNS-01_R2_Runbook_Supplement_v1.9/PACKAGE_CONTENT_SHA256SUMS",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "62185520f0a3af9dea0ddddef026974e4b7a7ecccf901c3af1605bb43cadce6a",
+      "destination_sha256": "62185520f0a3af9dea0ddddef026974e4b7a7ecccf901c3af1605bb43cadce6a",
+      "transformation": "none; byte-exact"
+    },
+    {
+      "destination": "references/notion-export-20260918/BIND_Primary_Secondary.md",
+      "mode": "100644",
+      "source_type": "user-provided Notion export",
+      "source_archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+      "source_archive_sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+      "source_path": "BIND Primary Secondary 3c7b032f99a18026b71af192baa91408.md",
+      "source_sha256": "67756fb3ada071971611b57f77a2cd74a0b9d3952904049d216d62bc3ceb0dd6",
+      "destination_sha256": "67756fb3ada071971611b57f77a2cd74a0b9d3952904049d216d62bc3ceb0dd6",
+      "transformation": "none; byte-exact; filename normalized to distinguish historical revision"
+    },
+    {
+      "destination": "references/notion-export-20260918/P1-DNS-01_Implementation_Validation_Report_v1.0.md",
+      "mode": "100644",
+      "source_type": "user-provided Notion export",
+      "source_archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+      "source_archive_sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+      "source_path": "P1-DNS-01_Implementation_Validation_Report_v1.0.md",
+      "source_sha256": "9cb9dc55017cc531b3f11ed090b6af658d235317333b327f18ecd0e3987a82a2",
+      "destination_sha256": "9cb9dc55017cc531b3f11ed090b6af658d235317333b327f18ecd0e3987a82a2",
+      "transformation": "none; byte-exact; filename normalized to distinguish historical revision"
+    },
+    {
+      "destination": "references/notion-export-20260918/P1-DNS-01_Notion_Description_v1.3-R2.md",
+      "mode": "100644",
+      "source_type": "user-provided Notion export",
+      "source_archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+      "source_archive_sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+      "source_path": "P1-DNS-01_Notion_Description_v1.3_Review.md",
+      "source_sha256": "460d153b6c2ccbff506a5a26e2db7462abbac126979bb57a1d5f43d2acaadd2a",
+      "destination_sha256": "460d153b6c2ccbff506a5a26e2db7462abbac126979bb57a1d5f43d2acaadd2a",
+      "transformation": "none; byte-exact; filename normalized to distinguish historical revision"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/PACKAGE_CONTENT_SHA256SUMS",
+      "mode": "100644",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/PACKAGE_CONTENT_SHA256SUMS",
+      "source_zip_mode": "0o100640",
+      "source_sha256": "452eadc988050359132581a251fd723974956eb94358c3cb298c2abb71a3ecba",
+      "destination_sha256": "452eadc988050359132581a251fd723974956eb94358c3cb298c2abb71a3ecba",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/PACKAGE_CONTENT_SHA256SUMS",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/P1-DNS-01_R2_Status_Update.md",
+      "mode": "100644",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/P1-DNS-01_R2_Status_Update.md",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "f1e0f16733bfae5d62bf37d1ee137dbacef0a78641f98be48ea5b34bbe2efbda",
+      "destination_sha256": "f1e0f16733bfae5d62bf37d1ee137dbacef0a78641f98be48ea5b34bbe2efbda",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/P1-DNS-01_R2_Status_Update.md",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/TEST_ID_MAPPING.md",
+      "mode": "100644",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/TEST_ID_MAPPING.md",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "aac23bd587d53efee3381a34f05beced4c44263176cf39aaad34c45d0f775596",
+      "destination_sha256": "aac23bd587d53efee3381a34f05beced4c44263176cf39aaad34c45d0f775596",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/TEST_ID_MAPPING.md",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/FILE_MANIFEST.md",
+      "mode": "100644",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/FILE_MANIFEST.md",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "fde009f5204913a71acfaccb79b297217d9f80a43cdde442806165a4451f7631",
+      "destination_sha256": "fde009f5204913a71acfaccb79b297217d9f80a43cdde442806165a4451f7631",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/FILE_MANIFEST.md",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/validate_r2_package.sh",
+      "mode": "100755",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/validate_r2_package.sh",
+      "source_zip_mode": "0o100750",
+      "source_sha256": "4db3de2fec04da3cc83c53c1011a29bd18e9cecd3496de075c49802767903990",
+      "destination_sha256": "4db3de2fec04da3cc83c53c1011a29bd18e9cecd3496de075c49802767903990",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/validate_r2_package.sh",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/generate_evidence_index.sh",
+      "mode": "100755",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/generate_evidence_index.sh",
+      "source_zip_mode": "0o100750",
+      "source_sha256": "0584d22f6c2b9f5f82ec59fdaeb14604fcb2a7e71b204db1591724e411ba7182",
+      "destination_sha256": "0584d22f6c2b9f5f82ec59fdaeb14604fcb2a7e71b204db1591724e411ba7182",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/generate_evidence_index.sh",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/generate_checksums_r2.sh",
+      "mode": "100755",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/generate_checksums_r2.sh",
+      "source_zip_mode": "0o100750",
+      "source_sha256": "dd50f7506c79ff786677fa4e59f55b6bd21a4468af4ca792e013c2ae52f1fe1e",
+      "destination_sha256": "dd50f7506c79ff786677fa4e59f55b6bd21a4468af4ca792e013c2ae52f1fe1e",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/generate_checksums_r2.sh",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/collect_dns_record_inventory_evidence.sh",
+      "mode": "100755",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/collect_dns_record_inventory_evidence.sh",
+      "source_zip_mode": "0o100750",
+      "source_sha256": "6bfd202f3a0d0947e3746f61365bebaeac562a5afa77c03e0e62b6ac3da9ebcb",
+      "destination_sha256": "6bfd202f3a0d0947e3746f61365bebaeac562a5afa77c03e0e62b6ac3da9ebcb",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/collect_dns_record_inventory_evidence.sh",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/collect_dns02_fresh_tsig_evidence.sh",
+      "mode": "100755",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/collect_dns02_fresh_tsig_evidence.sh",
+      "source_zip_mode": "0o100750",
+      "source_sha256": "5e2de5f2960d99cc1d2f2e92d95aed5019c96fcda9443357894fd9be7a75be29",
+      "destination_sha256": "5e2de5f2960d99cc1d2f2e92d95aed5019c96fcda9443357894fd9be7a75be29",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/scripts/collect_dns02_fresh_tsig_evidence.sh",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/README.md",
+      "mode": "100644",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/README.md",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "9d70b6cd8ad1aa5b75464e9e36cc3d7eae5ddb89bc4bbe3dd7a2bd06fc0f0ebc",
+      "destination_sha256": "9d70b6cd8ad1aa5b75464e9e36cc3d7eae5ddb89bc4bbe3dd7a2bd06fc0f0ebc",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/README.md",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "runbooks/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/R2_REMEDIATION_RUNBOOK.md",
+      "mode": "100644",
+      "source_type": "server archive; strict SSH/SCP read-only intake",
+      "source_host": "ansible01",
+      "source_account": "server01_ansible",
+      "source_archive": "/home/server01_ansible/p1-dns-01-r2/incoming/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8.zip",
+      "source_archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+      "source_path": "P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/R2_REMEDIATION_RUNBOOK.md",
+      "source_zip_mode": "0o100644",
+      "source_sha256": "f52253051bb73bbb5b1e7e6ffdca9aa23254dd8ac806d2d5e9cc2226611bfc28",
+      "destination_sha256": "f52253051bb73bbb5b1e7e6ffdca9aa23254dd8ac806d2d5e9cc2226611bfc28",
+      "installed_path": "/home/server01_ansible/p1-dns-01-r2/kit/P1-DNS-01_R2_Evidence_Remediation_Kit_v1.8/R2_REMEDIATION_RUNBOOK.md",
+      "installed_matches_archive": true,
+      "transformation": "none; byte-exact; Git executable bit preserved"
+    },
+    {
+      "destination": "references/console-20260918/dns01/named.expanded.sanitized.reference.conf",
+      "mode": "100644",
+      "source_type": "user-provided console collection; normalized masked configuration",
+      "source_host": "dns01",
+      "source_account": "server01_dns01",
+      "collected_at": "2026-09-18T11:05:05+09:00",
+      "source_path": "dns-source-intake.dns01.Htu9rkHA/named.expanded.sanitized.conf",
+      "source_sha256": "3a269aa35800afee638fcc9a6768cfdd21ab81a6b6a5c1945f6b8391bec3345d",
+      "destination_sha256": "3a269aa35800afee638fcc9a6768cfdd21ab81a6b6a5c1945f6b8391bec3345d",
+      "transformation": "none after receipt; byte-exact copy of named-checkconf -p -x output, NOT original named.conf",
+      "use": "NON-DEPLOYABLE reference; masked TSIG placeholder; effective process/config and original include layout remain unverified"
+    },
+    {
+      "destination": "references/console-20260918/dns02/named.expanded.sanitized.reference.conf",
+      "mode": "100644",
+      "source_type": "user-provided console collection; normalized masked configuration",
+      "source_host": "dns02",
+      "source_account": "server08",
+      "collected_at": "2026-09-18T11:05:13+09:00",
+      "source_path": "dns-source-intake.dns02.qVRcutre/named.expanded.sanitized.conf",
+      "source_sha256": "ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48",
+      "destination_sha256": "ea12325ab17893b25c112914432f045fd574af2a9704d12601a41486fa058f48",
+      "transformation": "none after receipt; byte-exact copy of named-checkconf -p -x output, NOT original named.conf",
+      "use": "NON-DEPLOYABLE reference; masked TSIG placeholder; effective process/config and original include layout remain unverified"
+    },
+    {
+      "destination": "zones/fds.internal.zone",
+      "mode": "100644",
+      "source_type": "user-collected server source preserved in evidence PR 16",
+      "source_host": "dns01",
+      "source_path": "/var/named/fds.internal.zone",
+      "collected_at": "2026-09-18T12:24:50.578094+09:00",
+      "source_repository": "321Team/fds-project-evidence",
+      "source_commit": "f5f1537408a17672aed8581e7cbe2962bd4951f5",
+      "source_evidence_path": "evidence/P1-DNS-01/source-intake/received-20260918T032605Z/stage2/dns01/fds.internal.source",
+      "source_sha256": "f4bbbc4818e9724b07c1452caecfdb8d0629c8bf6fb75ea092ae44adc31642d8",
+      "destination_sha256": "f4bbbc4818e9724b07c1452caecfdb8d0629c8bf6fb75ea092ae44adc31642d8",
+      "transformation": "none; byte-exact primary source",
+      "use": "source import only; no runtime deployment or serial change"
+    },
+    {
+      "destination": "references/console-20260918/dns02/fds.internal.normalized.reference.zone",
+      "mode": "100644",
+      "source_type": "user-collected server source preserved in evidence PR 16",
+      "source_host": "dns02",
+      "source_path": "/var/named/slaves/fds.internal.zone",
+      "collected_at": "2026-09-18T12:24:52.741710+09:00",
+      "source_repository": "321Team/fds-project-evidence",
+      "source_commit": "f5f1537408a17672aed8581e7cbe2962bd4951f5",
+      "source_evidence_path": "evidence/P1-DNS-01/source-intake/received-20260918T032605Z/stage2/dns02/fds.internal.normalized.zone",
+      "source_sha256": "7161d50eaaed299d4cc14eb409a5351e7c260aff572db04e8a3802c97c09b954",
+      "destination_sha256": "7161d50eaaed299d4cc14eb409a5351e7c260aff572db04e8a3802c97c09b954",
+      "transformation": "none after receipt; byte-exact normalized comparison output of named-checkzone -f raw -D -F text, not the raw file",
+      "use": "source import only; no runtime deployment or serial change"
+    }
+  ],
+  "archives": [
+    {
+      "name": "P1-DNS-01-FRESH-20260902-R2.zip",
+      "sha256": "e23d02a8422fdc4943ce2e255b5b087f0e58e5ad2a0439ddcf7d041276f315ab",
+      "zip_sidecar": "PASS; relative basename matches",
+      "crc": "PASS",
+      "internal_hash_checks": 23,
+      "file_count": 24
+    },
+    {
+      "name": "P1-DNS-01_R2_Runbook_Supplement_v1.9.zip",
+      "sha256": "86587f04dba2798ff7e34a7314cce0a87bcb3539c3746de7bcb878c2a2932a07",
+      "zip_sidecar": "PASS; relative basename matches",
+      "crc": "PASS",
+      "internal_hash_checks": 4,
+      "file_count": 5
+    }
+  ],
+  "evidence_comparison": {
+    "repository": "321Team/fds-project-evidence",
+    "commit": "90093f88167055f81e8789d2a848f44ead0ee9ce",
+    "path": "evidence/P1-DNS-01/received-20260907T063705Z/zip-contents",
+    "matched_git_blobs": 24,
+    "total_files": 24,
+    "action": "link existing evidence; do not duplicate or modify"
+  },
+  "notion_intake": {
+    "received_date_kst": "2026-09-18",
+    "archive": "5105230d-b598-4968-a458-64503a71317f_ExportBlock-fd026cbb-c768-4014-a699-e10065b3a745.zip",
+    "sha256": "3147bd95ba6ffa9192a933ef6302f7f7767fa5a441e2f6c64e0c371023b620c8",
+    "crc": "PASS",
+    "source_file_count": 5,
+    "external_archive_sidecar": "not supplied; SHA-256 computed at intake",
+    "files": [
+      {
+        "source_path": "BIND Primary Secondary 3c7b032f99a18026b71af192baa91408.md",
+        "bytes": 23178,
+        "sha256": "67756fb3ada071971611b57f77a2cd74a0b9d3952904049d216d62bc3ceb0dd6",
+        "action": "historical reference snapshot; not current execution policy",
+        "destination": "references/notion-export-20260918/BIND_Primary_Secondary.md"
+      },
+      {
+        "source_path": "P1-DNS-01_Implementation_Validation_Report_v1.0.md",
+        "bytes": 10741,
+        "sha256": "9cb9dc55017cc531b3f11ed090b6af658d235317333b327f18ecd0e3987a82a2",
+        "action": "historical reference snapshot; not current execution policy",
+        "destination": "references/notion-export-20260918/P1-DNS-01_Implementation_Validation_Report_v1.0.md"
+      },
+      {
+        "source_path": "P1-DNS-01_Notion_Description_v1.3_Review.md",
+        "bytes": 27238,
+        "sha256": "460d153b6c2ccbff506a5a26e2db7462abbac126979bb57a1d5f43d2acaadd2a",
+        "action": "historical reference snapshot; not current execution policy",
+        "destination": "references/notion-export-20260918/P1-DNS-01_Notion_Description_v1.3-R2.md"
+      },
+      {
+        "source_path": "P1-DNS-01_Support_Review_Approval_20260903.png",
+        "bytes": 8288,
+        "sha256": "0d0652c6940529e42619adbb54b2444a419fa265bea37dc247f5507c6487c4eb",
+        "action": "inspected and retained in local intake; not copied to source repo; original approval evidence intake belongs to independently reviewed evidence repository"
+      },
+      {
+        "source_path": "P1-DNS-01_Support_Review_Approval_Record_20260903.md",
+        "bytes": 1329,
+        "sha256": "0adc51a5f4b81ea4f502ffb3576062a2e315b7b20b31b392eb7391c1b38da95d",
+        "action": "inspected and retained in local intake; not copied to source repo; original approval evidence intake belongs to independently reviewed evidence repository"
+      }
+    ]
+  },
+  "server_intake": {
+    "source_host": "ansible01",
+    "source_account": "server01_ansible",
+    "checked_at_utc": "2026-09-18T01:49:58.153204+00:00",
+    "archive_sha256": "9843c2b2b6f560226a187ec2e970cde06446094d7ec9713bed341f6fd91e4674",
+    "archive_sidecar": "PASS",
+    "zip_crc": "PASS",
+    "internal_manifest_checks": 10,
+    "installed_file_matches": 11,
+    "installed_file_total": 11,
+    "collector_execution": "NOT RUN",
+    "dns_server_configuration": "pending authenticated access; no files collected",
+    "v19_validation_record": "no candidate in inspected DNS work root; not a whole-server search"
+  }
+}

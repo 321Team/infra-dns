@@ -1,0 +1,19 @@
+name: Source validation
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Verify migration and source hygiene
+        run: python3 tools/verify_migration.py
+      - name: Validate archived Runbook
+        run: bash runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/scripts/validate_runbook_v1_9.sh runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9

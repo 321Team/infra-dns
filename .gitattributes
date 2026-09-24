@@ -1,0 +1,4 @@
+* text eol=lf
+runbooks/** -text
+references/** -text
+zones/** -text
