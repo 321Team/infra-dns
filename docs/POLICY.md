@@ -29,6 +29,6 @@
 - SELinux enforcing, 제한된 방화벽·DNS ACL, 인증 통제를 유지한다. 모든 /24, 관리망, Pod CIDR를 편의상 허용하지 않는다.
 - 운영 적용은 검토된 SHA, 대상/계정/권한/경로, 선행조건, 성공·중단 기준, 복구안을 고정하여 해당 Lead가 판단한다. 이관 승인은 서버 적용·키 발급/회전 승인으로 확대하지 않는다.
 - STATIC / MOCK / CI / RUNTIME / REVIEW / MERGE / PUBLICATION을 별도로 기록한다. 해시 일치는 무결성, 검사 0건은 CI NOT RUN이다. 새 결과는 호스트·KST 시각·버전·명령·종료 코드·원본 로그·해시를 연결한다.
-- 새 Source CI는 GitHub-hosted·contents read·고정 checkout SHA·credential 비보존으로 정적 검사만 한다. 내부 Runner·Secret·배포 권한은 필요 없다. Actions 미실행 시 아래 로컬 검증 결과를 기록하고 CI PASS라고 쓰지 않는다.
+- 새 Source CI는 GitHub-hosted·contents read·고정 checkout SHA·credential 비보존으로 정적 검사와 모의 시험(`tests/`, 외부 명령을 가짜로 대체하며 서버·네트워크·Secret 불필요)만 한다. 내부 Runner·Secret·배포 권한은 필요 없다. Actions 미실행 시 아래 로컬 검증 결과를 기록하고 CI PASS라고 쓰지 않는다.
 
 복구는 이관 PR의 revert로 저장소 변경을 되돌리는 범위다. 서버를 변경하지 않았으므로 서버 복구를 수행했다고 기록하지 않는다. 이미 Done인 P1-DNS-01은 이관 때문에 재종결하지 않는다.
