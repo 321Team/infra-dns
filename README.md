@@ -15,7 +15,7 @@ Phase 1 BIND Primary/Secondary DNS의 구현 Source와 Runbook 저장소다. Pri
 
 ## 현재 사용 범위
 
-이 PR은 Source 등록이다. 운영 서버에 설치하거나 DNS 설정·TSIG·Failover를 재실행하지 않았다. 두 서버의 정규화·Secret 마스킹 참고 설정은 [콘솔 수집 기록](docs/SERVER_INTAKE.md)에 있다. 2차 수집으로 [주 Zone 원본](zones/fds.internal.zone)을 확보했고 양쪽 정규화 Zone의 A 13개·내용 동일성을 확인했다. [Zone 수신·이관 판정](docs/ZONE_INTAKE_20260918.md)을 따른다. Zone 수정은 [Zone 변경 절차](docs/ZONE_CHANGE.md)를 따른다. 원 named.conf/include 구조가 아직 없으므로 운영 배포 구성 전체가 이관됐다고 판단하지 않는다. 마스킹 참고 설정은 배포하지 않는다.
+이 PR은 Source 등록이다. 운영 서버에 설치하거나 DNS 설정·TSIG·Failover를 재실행하지 않았다. 두 서버의 정규화·Secret 마스킹 참고 설정은 [콘솔 수집 기록](docs/SERVER_INTAKE.md)에 있다. 2차 수집으로 [주 Zone 원본](zones/fds.internal.zone)을 확보했고 양쪽 정규화 Zone의 A 13개·내용 동일성을 확인했다. [Zone 수신·이관 판정](docs/ZONE_INTAKE_20260918.md)을 따른다. Zone 수정은 [Zone 변경 절차](docs/ZONE_CHANGE.md)를 따른다. 서버 반영 절차는 [운영 반영 Runbook 초안](docs/ZONE_OPERATIONS_RUNBOOK.md)(실행 승인 아님)이다. 원 named.conf/include 구조가 아직 없으므로 운영 배포 구성 전체가 이관됐다고 판단하지 않는다. 마스킹 참고 설정은 배포하지 않는다.
 
 v1.9는 **2026-09-02 R2 묶음 검증 전용**이다. 내부의 고정 해시·11/11/12 개수는 그 묶음에만 적용한다. 현재 DNS 전체 상태를 검사하는 범용 도구가 아니다. 원본 문서의 당시 Support 승인 표현은 역사로 보존하며, 현재 사람 간 승인 절차는 [2026-09-18 정책](https://github.com/321Team/fds-project-baseline/blob/b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948/governance/REVIEW_AUTHORITY_POLICY.md)을 적용한다.
 
