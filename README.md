@@ -28,7 +28,13 @@ python3 tools/verify_migration.py
 bash runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9/scripts/validate_runbook_v1_9.sh runbooks/P1-DNS-01_R2_Runbook_Supplement_v1.9
 ```
 
-두 검사 모두 종료 코드 0이면 이관 무결성·Runbook 정적 검사 성공이다. Runtime·독립 리뷰·병합 완료를 뜻하지 않는다. `validate_canonical_r2_v1_9.sh`는 지정 ansible01 계정과 원본 증적을 필요로 하므로 Source CI에서 실행하지 않는다.
+수집기 모의 시험(서버·네트워크·sudo 불필요, 외부 명령은 모두 가짜로 대체)은 다음으로 실행한다. 수집기 파일이 증적에 기록된 실행본(SHA-256 `9458d9aa…`)과 같은지도 함께 확인한다.
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+위 검사가 모두 종료 코드 0이면 이관 무결성·Runbook 정적 검사 성공이다. Runtime·독립 리뷰·병합 완료를 뜻하지 않는다. `validate_canonical_r2_v1_9.sh`는 지정 ansible01 계정과 원본 증적을 필요로 하므로 Source CI에서 실행하지 않는다.
 
 ## 변경 절차
 
