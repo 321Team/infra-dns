@@ -29,6 +29,9 @@ ZONE_TEXT = (ROOT / 'zones/fds.internal.zone').read_bytes()
 NORMALIZED = (ROOT / 'references/console-20260918/dns02/fds.internal.normalized.reference.zone').read_bytes()
 RAW_ZONE = b'\x00\x00\x00\x01raw-format-placeholder' * 8
 SECRET_VALUE = 'c2VjcmV0LXZhbHVlLWZvci10ZXN0LW9ubHk='
+# Assembled at runtime so the repository credential scan does not match this file.
+PEM_HEADER = ('-----BEGIN ' + 'PRIVATE KEY-----').encode()
+TOKEN_VALUE = ('gh' + 'p_' + 'A1b2C3d4E5f6G7h8I9j0K1l2').encode()
 
 
 class FakeServer:
@@ -47,6 +50,8 @@ class FakeServer:
         return C.EXPECTED[self.host][1]
 
     def zone_bytes(self):
+        if self.f.get('zone_private_key'):
+            return ZONE_TEXT + b'; ' + PEM_HEADER + b'\n'
         if self.f.get('include'):
             return ZONE_TEXT + b'$INCLUDE other.zone\n'
         return RAW_ZONE if self.host == 'dns02' else ZONE_TEXT
@@ -58,8 +63,14 @@ class FakeServer:
 
     def answer(self, a):
         pid = '1266'
+        if self.f.get('timeout') and a[-1].endswith('/exe'):
+            raise subprocess.TimeoutExpired(a, 30)
+        if self.f.get('missing_binary') and a[:1] == ['named']:
+            raise FileNotFoundError(a[0])
         if a[:2] == ['systemctl', 'show']:
             self.pid_calls += 1
+            if self.f.get('not_running'):
+                return b'0\n', 0
             if self.f.get('pid_changes') and self.pid_calls > 1:
                 return b'9999\n', 0
             return (pid + '\n').encode(), 0
@@ -67,9 +78,9 @@ class FakeServer:
             return b'', 1
         cmd = a[2:] if a[:2] == ['sudo', '-n'] else a
         if cmd[:2] == ['readlink', '-e'] and cmd[2].endswith('/exe'):
-            return b'/usr/sbin/named\n', 0
+            return (b'/usr/local/sbin/named\n' if self.f.get('other_exe') else b'/usr/sbin/named\n'), 0
         if cmd[:2] == ['readlink', '-e'] and cmd[2].endswith('/root'):
-            return b'/\n', 0
+            return (b'/var/named/chroot\n' if self.f.get('chroot_root') else b'/\n'), 0
         if cmd[:2] == ['readlink', '-e']:
             target = '/var/named/elsewhere.zone' if self.f.get('symlink') else self.source()
             return (target + '\n').encode(), 0
@@ -85,6 +96,8 @@ class FakeServer:
                 cfg += b'# changed\n'
             if self.f.get('secret'):
                 cfg = cfg.replace(b'????????????????????????????????????????????', SECRET_VALUE.encode())
+            if self.f.get('config_token'):
+                cfg += b'# ' + TOKEN_VALUE + b'\n'
             return cfg, 0
         if cmd[:2] == ['rndc', 'zonestatus']:
             self.status_calls += 1
@@ -92,8 +105,9 @@ class FakeServer:
             if self.f.get('serial_changes') and self.status_calls > 1:
                 serial = '2026090102'
             dynamic = 'yes' if self.f.get('dynamic') else 'no'
-            files = self.source()[len('/var/named/'):]
-            return (f'name: fds.internal\ntype: primary\nfiles: {files}\nserial: {serial}\n'
+            files = 'other.zone' if self.f.get('other_loaded_file') else self.source()[len('/var/named/'):]
+            serial_line = '' if self.f.get('no_serial') else f'serial: {serial}\n'
+            return (f'name: fds.internal\ntype: primary\nfiles: {files}\n{serial_line}'
                     f'dynamic: {dynamic}\n').encode(), 0
         if cmd[0] == 'sh':
             return (b'present\n' if self.f.get('journal') else b'absent\n'), 0
@@ -103,9 +117,17 @@ class FakeServer:
             if self.f.get('file_changes') and self.stat_calls > 1:
                 mtime = '2026-09-18 12:30:00.000000000 +0900'
             size = len(self.zone_bytes())
-            return f'regular file|64768|1343302|{size}|{mtime}|{mtime}\n'.encode(), 0
+            kind = 'directory' if self.f.get('not_regular') else 'regular file'
+            if self.f.get('empty_zone'):
+                size = 0
+            if self.f.get('oversized_zone'):
+                size = 4 * 1024 * 1024 + 1
+            if self.f.get('stat_garbage'):
+                return f'{kind}|64768|1343302|not-a-size|{mtime}|{mtime}\n'.encode(), 0
+            return f'{kind}|64768|1343302|{size}|{mtime}|{mtime}\n'.encode(), 0
         if cmd[0] == 'cat':
-            return self.zone_bytes(), 0
+            data = self.zone_bytes()
+            return (data[:-1] if self.f.get('short_read') else data), 0
         if cmd == ['named', '-v']:
             return b'BIND 9.18.33\n', 0
         if cmd == ['named-checkzone', '-v']:
@@ -154,6 +176,8 @@ class CollectorTestBase(unittest.TestCase):
             data = p.read_bytes()
             self.assertNotIn(b'SENSITIVE-STDERR', data, p.name)
             self.assertNotIn(SECRET_VALUE.encode(), data, p.name)
+            self.assertNotIn(PEM_HEADER, data, p.name)
+            self.assertNotIn(TOKEN_VALUE, data, p.name)
         manifest = (out / 'SHA256SUMS').read_text(encoding='utf-8')
         self.assertNotIn('\r', manifest)
         for line in manifest.splitlines():
@@ -260,6 +284,92 @@ class CollectorStopTest(CollectorTestBase):
     def test_zone_check_fails_both_formats(self):
         rc, out, _ = self.run_collector('dns01', checkzone_fail=True)
         self.assert_stopped(rc, out, 'failed both text and raw')
+
+    def test_named_not_running(self):
+        rc, out, _ = self.run_collector('dns01', not_running=True)
+        self.assert_stopped(rc, out, 'named is not running')
+
+    def test_other_process_executable(self):
+        rc, out, _ = self.run_collector('dns01', other_exe=True)
+        self.assert_stopped(rc, out, 'unexpected process executable')
+
+    def test_process_root_not_slash(self):
+        rc, out, _ = self.run_collector('dns01', chroot_root=True)
+        self.assert_stopped(rc, out, 'process root')
+
+    def test_command_timeout(self):
+        rc, out, _ = self.run_collector('dns01', timeout=True)
+        self.assert_stopped(rc, out, 'named-executable: unavailable or timed out')
+        commands = json.loads((out / 'COMMANDS.json').read_text(encoding='utf-8'))
+        self.assertIsNone(commands[-1]['exit_code'])
+
+    def test_missing_binary(self):
+        rc, out, _ = self.run_collector('dns01', missing_binary=True)
+        self.assert_stopped(rc, out, 'named-version: unavailable or timed out')
+
+    def test_private_key_in_zone_is_not_saved(self):
+        rc, out, _ = self.run_collector('dns01', zone_private_key=True)
+        self.assert_stopped(rc, out, 'sensitive content detected')
+        self.assertFalse((out / 'fds.internal.source').exists())
+
+    def test_token_in_config_is_not_saved(self):
+        rc, out, _ = self.run_collector('dns01', config_token=True)
+        self.assert_stopped(rc, out, 'sensitive content detected')
+        self.assertFalse((out / 'named.expanded.sanitized.conf').exists())
+
+    def test_loaded_zone_file_differs(self):
+        rc, out, _ = self.run_collector('dns01', other_loaded_file=True)
+        self.assert_stopped(rc, out, 'loaded zone file differs')
+
+    def test_missing_serial(self):
+        rc, out, _ = self.run_collector('dns01', no_serial=True)
+        self.assert_stopped(rc, out, 'missing zone serial')
+
+    def test_zone_not_regular_file(self):
+        rc, out, _ = self.run_collector('dns01', not_regular=True)
+        self.assert_stopped(rc, out, 'unexpected zone type or size')
+
+    def test_zone_empty(self):
+        rc, out, _ = self.run_collector('dns01', empty_zone=True)
+        self.assert_stopped(rc, out, 'unexpected zone type or size')
+
+    def test_zone_over_size_limit(self):
+        rc, out, _ = self.run_collector('dns01', oversized_zone=True)
+        self.assert_stopped(rc, out, 'unexpected zone type or size')
+
+    def test_zone_size_changed_while_reading(self):
+        rc, out, _ = self.run_collector('dns01', short_read=True)
+        self.assert_stopped(rc, out, 'zone size changed while reading')
+        self.assertFalse((out / 'fds.internal.source').exists())
+
+    def test_unexpected_output_format(self):
+        rc, out, _ = self.run_collector('dns01', stat_garbage=True)
+        self.assert_stopped(rc, out, 'unexpected output format; value suppressed')
+
+
+class SafeContentTest(unittest.TestCase):
+    def check_stop(self, data, message, zone=False):
+        with self.assertRaises(C.Stop) as ctx:
+            C.safe_content(data, zone)
+        self.assertIn(message, str(ctx.exception))
+
+    def test_private_key_headers(self):
+        for kind in ('', 'RSA ', 'EC ', 'OPENSSH ', 'ENCRYPTED '):
+            header = ('-----BEGIN ' + kind + 'PRIVATE KEY-----').encode()
+            self.check_stop(b'x\n' + header + b'\n', 'sensitive content')
+
+    def test_github_tokens(self):
+        self.check_stop(b'token ' + TOKEN_VALUE, 'sensitive content')
+        self.check_stop(('github_' + 'pat_' + 'A' * 30).encode(), 'sensitive content')
+
+    def test_secret_masking(self):
+        C.safe_content(b'key "k" { secret "????????"; };')
+        self.check_stop(b'key "k" { secret "????abcd"; };', 'unmasked shared secret')
+        self.check_stop(b'key "k" { SECRET "' + SECRET_VALUE.encode() + b'"; };', 'unmasked shared secret')
+
+    def test_include_only_checked_for_zone(self):
+        C.safe_content(b'$INCLUDE other.zone\n')
+        self.check_stop(b'$include other.zone\n', 'zone INCLUDE', zone=True)
 
 
 class ProcessConfigTest(unittest.TestCase):
