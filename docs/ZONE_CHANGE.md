@@ -13,6 +13,8 @@
 
 ## 운영 반영 — 후속 과제
 
+진행 중: [#5](https://github.com/321Team/infra-dns/issues/5)에서 [Zone 운영 반영 Runbook 초안](ZONE_OPERATIONS_RUNBOOK.md)과 오프라인 drift 비교기(`tools/compare_zone_drift.py`)를 준비했다. 초안은 실행 승인이 아니며 아래 원칙은 그대로다.
+
 저장소 병합은 서버 반영이 아니다. dns01 반영 방식(파일 배치·권한·SELinux context·reload), dns02 전송과 serial 확인, 저장소와 서버 간 drift 확인, 중단·복구 기준은 아직 Runbook으로 정의되지 않았다.
 
 정의 전에는 Zone 병합을 운영 반영 완료로 표시하지 않는다. 반영이 필요하면 [운영 정책](POLICY.md)에 따라 Lead가 검토된 SHA·대상·계정·선행조건·성공/중단 기준·복구안을 먼저 고정한다.
