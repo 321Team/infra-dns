@@ -19,6 +19,8 @@ Phase 1 BIND Primary/Secondary DNS의 구현 Source와 Runbook 저장소다. Pri
 
 v1.9는 **2026-09-02 R2 묶음 검증 전용**이다. 내부의 고정 해시·11/11/12 개수는 그 묶음에만 적용한다. 현재 DNS 전체 상태를 검사하는 범용 도구가 아니다. 원본 문서의 당시 Support 승인 표현은 역사로 보존하며, 현재 사람 간 승인 절차는 [2026-09-18 정책](https://github.com/321Team/fds-project-baseline/blob/b2e4612cf2e417b10e7f145c5b1e5f58dbe1b948/governance/REVIEW_AUTHORITY_POLICY.md)을 적용한다.
 
+방화벽 재기동 지속성·`dns` service 정의·실제 패킷 확인은 [방화벽 확인 계획](docs/DNS_FIREWALL_VERIFICATION_PLAN.md)을 따른다(조회 도구 준비, 패킷·재기동 시험은 승인 전 계획, [#7](https://github.com/321Team/infra-dns/issues/7)).
+
 ## 로컬 Source 검사
 
 저장소 루트에서 Python 3 및 Bash가 있는 환경으로 실행한다. 서버 접근·관리자 권한·Secret은 필요 없다.
