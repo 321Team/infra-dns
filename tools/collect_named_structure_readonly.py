@@ -26,6 +26,8 @@ import tempfile
 HOSTS = ('dns01', 'dns02')
 ROOT_CONFIG = '/etc/named.conf'
 ALLOWED_PREFIXES = ('/etc/', '/var/named/')
+CRYPTO_POLICY_LINK = '/etc/crypto-policies/back-ends/bind.config'
+CRYPTO_POLICY_TARGET_RE = re.compile(r'^/usr/share/crypto-policies/[A-Za-z0-9_.+-]+/bind\.txt$')
 MAX_FILES = 32
 MAX_DEPTH = 8
 MAX_BYTES = 256 * 1024
@@ -40,6 +42,15 @@ process_config = _zc.process_config
 
 class Stop(Exception):
     pass
+
+
+def read_path_for(path, resolved):
+    """Return the path to read after a narrowly-scoped symlink check."""
+    if resolved == path:
+        return path
+    if path == CRYPTO_POLICY_LINK and CRYPTO_POLICY_TARGET_RE.fullmatch(resolved):
+        return resolved
+    raise Stop('symlinked or nonstandard configuration path requires review')
 
 
 def strip_comments(text):
@@ -183,12 +194,12 @@ def main():
             if not path.startswith(ALLOWED_PREFIXES) or '/../' in path:
                 raise Stop('include outside /etc or /var/named requires review')
             n = len(order)
-            if run(f'resolved-path-{n:02}', ['sudo', '-n', 'readlink', '-e', path]).strip().decode() != path:
-                raise Stop('symlinked or nonstandard configuration path requires review')
-            st = run(f'stat-{n:02}', ['sudo', '-n', 'stat', '-Lc', '%F|%U|%G|%a|%C|%s', path]).decode().strip().split('|')
+            resolved = run(f'resolved-path-{n:02}', ['sudo', '-n', 'readlink', '-e', path]).strip().decode()
+            read_path = read_path_for(path, resolved)
+            st = run(f'stat-{n:02}', ['sudo', '-n', 'stat', '-Lc', '%F|%U|%G|%a|%C|%s', read_path]).decode().strip().split('|')
             if len(st) != 6 or st[0] != 'regular file' or not (0 < int(st[5]) <= MAX_BYTES):
                 raise Stop('unexpected configuration file type or size')
-            raw = run(f'read-in-memory-{n:02}', ['sudo', '-n', 'cat', path])
+            raw = run(f'read-in-memory-{n:02}', ['sudo', '-n', 'cat', read_path])
             if len(raw) != int(st[5]):
                 raise Stop('configuration file size changed while reading')
             text = raw.decode('utf-8')
@@ -199,7 +210,7 @@ def main():
             masked_name = f'masked/{n:02}-{safe}'
             (out / masked_name).write_text(masked, encoding='utf-8', newline='')
             files[path] = {
-                'path': path, 'included_from': parent, 'depth': depth,
+                'path': path, 'resolved_path': resolved, 'included_from': parent, 'depth': depth,
                 'type': st[0], 'owner': st[1], 'group': st[2], 'mode': st[3], 'selinux_context': st[4],
                 'size_bytes': int(st[5]),
                 'contains_secret_statement': any(k['has_secret_statement'] for k in info['key_definitions'])
@@ -232,8 +243,10 @@ def main():
             'keys_referenced_but_not_defined': sorted(referenced - defined),
             'expanded_masked_config_sha256': hashlib.sha256(cfg).hexdigest(),
             'expanded_matches_20260918_pinned_hash': hashlib.sha256(cfg).hexdigest() == _zc.EXPECTED[host][0],
-            'limits': {'allowed_prefixes': list(ALLOWED_PREFIXES), 'max_files': MAX_FILES, 'max_depth': MAX_DEPTH,
-                       'max_bytes': MAX_BYTES},
+            'limits': {'allowed_prefixes': list(ALLOWED_PREFIXES),
+                       'allowed_crypto_policy_link': CRYPTO_POLICY_LINK,
+                       'allowed_crypto_policy_target_pattern': CRYPTO_POLICY_TARGET_RE.pattern,
+                       'max_files': MAX_FILES, 'max_depth': MAX_DEPTH, 'max_bytes': MAX_BYTES},
         }
         (out / 'structure.json').write_text(json.dumps(structure, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
         status = {'status': 'COMPLETE_COLLECTION_ONLY', 'finished_at_kst': now(), 'files': len(order),
