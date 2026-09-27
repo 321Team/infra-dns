@@ -15,6 +15,7 @@ spec.loader.exec_module(S)
 
 SECRET = 'dGVzdC1vbmx5LXNlY3JldC12YWx1ZS0wMTIzNDU2Nzg5QUI='
 RNDC_SECRET = 'cm5kYy10ZXN0LXNlY3JldC0wMTIzNDU2Nzg5YWJjZGVm'
+CRYPTO_POLICY_TARGET = '/usr/share/crypto-policies/DEFAULT/bind.txt'
 
 NAMED_CONF = '''// named.conf for tests
 // include "/etc/commented-out.conf";
@@ -69,6 +70,9 @@ class FakeServer:
                 return b'/usr/sbin/named\n', 0
             if p.endswith('/root'):
                 return b'/\n', 0
+            target = self.f.get('symlink_targets', {}).get(p)
+            if target is not None:
+                return (target + '\n').encode(), 0
             if p not in self.files:
                 return b'', 1
             return ((p + '.real' if p in self.f.get('symlinks', ()) else p) + '\n').encode(), 0
@@ -196,6 +200,26 @@ class StructureStopTest(StructureBase):
     def test_symlinked_file(self):
         rc, out, _ = self.run_tool(symlinks=('/etc/rndc.key',))
         self.assert_stopped(rc, out, 'symlinked')
+
+    def test_allows_reviewed_crypto_policy_symlink(self):
+        files = self.with_conf(f'include "{S.CRYPTO_POLICY_LINK}";\n')
+        files[CRYPTO_POLICY_TARGET] = 'disable-algorithms "." { RSAMD5; };\n'
+        rc, out, _ = self.run_tool(
+            files=files,
+            symlink_targets={S.CRYPTO_POLICY_LINK: CRYPTO_POLICY_TARGET})
+        self.assertEqual(rc, 0)
+        structure = json.loads((out / 'structure.json').read_text(encoding='utf-8'))
+        by = {item['path']: item for item in structure['files']}
+        self.assertEqual(by[S.CRYPTO_POLICY_LINK]['resolved_path'], CRYPTO_POLICY_TARGET)
+        self.assert_no_secret_output(out)
+
+    def test_crypto_policy_symlink_to_unreviewed_target_stops(self):
+        files = self.with_conf(f'include "{S.CRYPTO_POLICY_LINK}";\n')
+        files['/tmp/bind.txt'] = 'options { };\n'
+        rc, out, _ = self.run_tool(
+            files=files,
+            symlink_targets={S.CRYPTO_POLICY_LINK: '/tmp/bind.txt'})
+        self.assert_stopped(rc, out, 'symlinked or nonstandard')
 
     def test_oversized_file(self):
         rc, out, _ = self.run_tool(size=S.MAX_BYTES + 1)
