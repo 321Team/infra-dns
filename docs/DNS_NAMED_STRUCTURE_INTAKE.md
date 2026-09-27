@@ -1,6 +1,6 @@
 # named.conf include 구조·TSIG 키 참조 수집 절차 (#6)
 
-상태: 수집 도구와 절차를 준비했다. **서버 실행 전이다.** 책임 과제: [#6](https://github.com/321Team/infra-dns/issues/6).
+상태: dns01 1차 실행에서 OS crypto-policy 관리 symlink가 기존 일반 symlink 가드에 걸려 INCOMPLETE로 중단됐다. 서버 설정은 변경하지 않았고, 해당 정상 OS 경로만 최소 허용하도록 보완 중이다. 책임 과제: [#6](https://github.com/321Team/infra-dns/issues/6).
 
 ## 목적
 
@@ -22,7 +22,8 @@
 - **중단 조건(INCOMPLETE):**
   - 상대 경로 include
   - `/etc/`·`/var/named/` 밖의 include
-  - symlink, 같은 파일 두 번 포함(순환 포함)
+  - 일반 symlink. 단, RHEL 계열 crypto-policy가 관리하는 정확한 `/etc/crypto-policies/back-ends/bind.config` → `/usr/share/crypto-policies/<policy>/bind.txt` 형태만 예외로 허용하고 실제 해석 경로를 `structure.json`에 기록한다.
+  - 같은 파일 두 번 포함(순환 포함)
   - 32개 초과 파일, 깊이 8 초과, 256 KiB 초과
   - 읽는 중 크기 변경
   - 괄호 불균형
