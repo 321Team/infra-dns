@@ -85,6 +85,17 @@ def rich_rules(block):
     return [l.strip() for l in (m.group(1) if m else '').splitlines() if l.strip()]
 
 
+def parse_nm_connection(text):
+    """Parse nmcli -g output: one requested property per output line."""
+    lines = text.splitlines()
+    if len(lines) != 2:
+        raise Stop('unexpected NetworkManager property output')
+    zone, autoconnect = lines
+    if autoconnect not in ('yes', 'no'):
+        raise Stop('unexpected NetworkManager autoconnect value')
+    return zone, autoconnect
+
+
 def summarize(o):
     rt_public = zone_block(o['zones-runtime'], 'public')
     pm_public = zone_block(o['zones-permanent'], 'public')
@@ -93,8 +104,7 @@ def summarize(o):
     set_rt = sorted(o['ipset-entries-runtime'].split())
     set_pm = sorted(o['ipset-entries-permanent'].split())
     active = [l for l in o['nm-active'].splitlines() if l.endswith(':' + IFACE)]
-    nm_line = (o.get('nm-connection', '').splitlines() or [''])[0]
-    nm_zone = [v.replace('\\:', ':') for v in re.split(r'(?<!\\):', nm_line)]  # terse: fields joined by ':'
+    nm_zone, nm_autoconnect = parse_nm_connection(o.get('nm-connection', ''))
     return {
         'firewalld_active': o['firewalld-active'].strip() == 'active',
         'firewalld_enabled': o['firewalld-enabled'].strip() == 'enabled',
@@ -116,9 +126,9 @@ def summarize(o):
         'ipset_entries_permanent': len(set_pm),
         'ipset_runtime_equals_permanent': set_rt == set_pm,
         'nm_active_connection_on_interface': len(active) == 1,
-        'nm_connection_zone': nm_zone[0] if nm_zone else None,
+        'nm_connection_zone': nm_zone,
         'nm_connection_zone_note': 'empty means the connection follows the firewalld default zone',
-        'nm_autoconnect': nm_zone[1] if len(nm_zone) > 1 else None,
+        'nm_autoconnect': nm_autoconnect,
         'policies_runtime_present': bool(o['policies-runtime'].strip()),
         'policies_permanent_present': bool(o['policies-permanent'].strip()),
         'direct_rules_runtime': [l for l in o['direct-runtime'].splitlines() if l.strip()],

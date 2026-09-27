@@ -73,7 +73,7 @@ class FakeHost:
             rows = self.f.get('nm_rows', ['ens160:ens160', 'lo:lo'])
             return '\n'.join(rows) + '\n', 0
         if cmd[0] == 'nmcli':
-            return self.f.get('nm_values', ':yes') + '\n', 0
+            return self.f.get('nm_values', '\nyes') + '\n', 0
         if cmd == ['nft', 'list', 'ruleset']:
             return 'table inet firewalld {\n}\n', 0
         raise AssertionError(f'unexpected {a}')
@@ -129,8 +129,8 @@ class FirewallNormalTest(FirewallBase):
         for argv in fake.calls:
             F.check_read_only(argv)
 
-    def test_nm_zone_value_with_escaped_colon(self):
-        rc, out, _ = self.run_tool(nm_values='pub\\:lic:no')
+    def test_nm_zone_value_with_colon(self):
+        rc, out, _ = self.run_tool(nm_values='pub:lic\nno')
         s = self.summary(out)
         self.assertEqual((s['nm_connection_zone'], s['nm_autoconnect']), ('pub:lic', 'no'))
 
@@ -163,6 +163,14 @@ class FirewallStopTest(FirewallBase):
     def test_ambiguous_nm_connection(self):
         rc, out, _ = self.run_tool(nm_rows=['a:ens160', 'b:ens160'])
         self.assert_stopped(rc, out, 'exactly one active NetworkManager connection')
+
+    def test_malformed_nm_property_output(self):
+        rc, out, _ = self.run_tool(nm_values='yes')
+        self.assert_stopped(rc, out, 'unexpected NetworkManager property output')
+
+    def test_unexpected_nm_autoconnect_value(self):
+        rc, out, _ = self.run_tool(nm_values='\nmaybe')
+        self.assert_stopped(rc, out, 'unexpected NetworkManager autoconnect value')
 
 
 class ReadOnlyGuardTest(unittest.TestCase):
